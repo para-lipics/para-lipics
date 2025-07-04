@@ -7,9 +7,13 @@
 )
 
 #let fonts = (
-  sans: "New Computer Modern Sans",
+  // sans: "New Computer Modern Sans",
+  // serif: "New Computer Modern",
+  // math: "New Computer Modern Sans Math",
+  // mono: "New Computer Modern Mono",
+  sans: "CMU Sans Serif",
   serif: "New Computer Modern",
-  math: "New Computer Modern Sans Math",
+  math: "New Computer Modern Math",
   mono: "New Computer Modern Mono",
 )
 
@@ -62,7 +66,7 @@
         symbol
         h(1mm)
       }
-      title-style(text(font: fonts.sans, title))
+      title-style(text(font: fonts.sans)[*#title*])
       parbreak()
       content
     },
@@ -166,7 +170,7 @@
   supplementary-material-description: none,
   acknowledgements: none,
   funding-general-thanks: none,
-  copyright: [Jane Open Access and Joan R. Public],
+  copyright: none,
   ccs: none,
   bibliography: none,
   editors: [],
@@ -284,7 +288,10 @@
     par(
       spacing: 0cm,
       leading: 1em,
-      text(17.28pt, tracking: 0.6pt, spacing: 85%, weight: "bold", font: fonts.sans, title),
+      text(
+        17.28pt, tracking: 0.6pt, spacing: 85%,
+        weight: "bold", font: fonts.sans, title
+      ),
     )
 
     v(5.5mm)
@@ -321,7 +328,9 @@
       columns: (7mm, auto, 1fr),
       align: horizon,
       column-gutter: 1.6mm,
-      line(length: 100%), text(11pt, font: fonts.sans, tracking: 0.01em)[Abstract], line(length: 100%),
+      box(baseline: -100%, line(length: 100%, stroke: colors.linegray)),
+      text(11pt, font: fonts.sans, tracking: 0.01em, weight: "bold")[Abstract],
+      line(length: 100%, stroke: rgb("#828085")),
     )
     v(3.1mm)
     par(leading: 2.1mm, text(size: 9pt, abstract))
@@ -335,9 +344,12 @@
           return none
         }
         set par(leading: 0.6em)
-        text(size: 9pt, tracking: 0.1pt, font: fonts.sans, weight: 700, title)
+        text(
+          size: 9pt, tracking: 0.1pt, weight: 700,
+          font: fonts.sans, colors.gray, title
+        )
         h(1mm)
-        content
+        text(size: 9pt, content)
       }
 
       set par(leading: 0.5em)
@@ -350,7 +362,10 @@
           // Keywords
           el([Keywords and phrases], keywords),
           // Digital Object Identifier
-          el([Digital Object Identifier], digital-object-id),
+          el(
+            [Digital Object Identifier],
+            link("https://doi.org/" + digital-object-id, digital-object-id)
+          ),
           // Category
           el([Category], category),
           // Supplementary material

@@ -18,14 +18,14 @@
 // )
 
 #show: lib.template.with(
-  title: [LIPIcs Typst Template, an exercise in Typst template making, showcased on Typst's Discord],
+  title: [*Dummy title*],
   title-running: [LIPIcs Typst Template],
   authors: (
     (
       name: "Jane Open Access",
       running: "J. Open Access",
       affiliations: (
-        (name: [Dummy University Computing Laboratory], address: [Address], country: [Country]),
+        (name: [Dummy University Computing Laboratory], address: [[optional: Address]], country: [Country]),
         (name: [My second affiliation], country: [Country]),
       ),
     ),
@@ -39,12 +39,13 @@
     ),
   ),
   abstract: [
-    This document is a testing ground for the Typst LIPIcs article template.
-    It showcases the implemented features, as well as the current shortcomings.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent convallis orci arcu, eu mollis dolor.
+    Aliquam eleifend suscipit lacinia. Maecenas quam mi, porta ut lacinia sed, convallis ac dui. Lorem
+    ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse potenti.
   ],
   keywords: [*typst*, type setting, style, lipics-v2021],
-  digital-object-id: [123.4567],
-  category: [Showcase],
+  digital-object-id: "10.4230/LIPIcs.CVIT.2016.23",
+  // category: [Showcase],
   supplementary-material-description: [These are supplementary materials],
   supplementary-material: (
     (
@@ -72,7 +73,7 @@
   event-location: [Showcase forum \ Discord],
   event-logo: text(size: 12pt, fill: oklch(64%, 0.08, 200deg), weight: "bold", [typst]),
   event-short-title: [GTDSC 2025],
-  copyright: [Anne Onymous],
+  copyright: [Anne Onymous], // Jane Open Access and Joan R. Public
   line-numbers: true,
 )
 
