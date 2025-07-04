@@ -9,6 +9,7 @@ para-lipics: An Unofficial LIPIcs Typst Template - CHANGELOG (YYYY-MM-DD format)
         - updated license
     - compliance with official LIPIcs template:
         - made document title bold
+        - fixed line numbers
         - fixed metadata elements color and made them bold
         - changed sans font for CMU Sans
         - added editor-only arguments
@@ -16,7 +17,7 @@ para-lipics: An Unofficial LIPIcs Typst Template - CHANGELOG (YYYY-MM-DD format)
         - abstract: "Abstract" bold and fixed horizontal rule color
         - fixed footnote's horizontal rule color
         - added SVG logo files
-        - first page footer: integrated LIPIcs logo, fixed the event/copyright/publisher info
+        - first page footer: integrated LIPIcs logo, fixed event/copyright/publisher info
     - other:
         - added DOI link
         - changed parts of the testing document to make it closer to the official LIPIcs dummy document (easier for comparison)

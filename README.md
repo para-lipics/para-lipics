@@ -1,26 +1,44 @@
-# para-lipics: An Unofficial LIPIcs Typst template
+# para-lipics: An Unofficial LIPIcs Template for Typst
 
-Unofficial reproduction of the LaTeX `lipics-v2021.cls` template.
+A community-maintained Typst reproduction of the official LaTeX `lipics-v2021.cls` template.
 
-Github issues and PRs are welcome.
+GitHub issues and pull requests are welcome.
 
 ## Requirements
 
-This template requires Typst >= 0.13.1.
+This template requires **Typst ≥ 0.13.1**.
 
-Due to the current impossibility of shipping fonts with templates on Typst Universe, some fonts have to be installed separately for maximal compliance with the LIPIcs official template.
-If these fonts are not available during compilation, then fallback fonts embedded in the CLI are used.
-If you're using the webapp, just upload the corresponding `.ttf` or `.otf` files in your project.
-If you're using the CLI, install the fonts on your system, or provide them using the `--font-path` argument.
+Due to current limitations in Typst's font handling, it is currently not possible to ship custom fonts directly within Typst Universe templates.
+As a result, some fonts must be installed separately to ensure maximal visual compatibility with the official LIPIcs style.
 
-Here are the fonts to install:
+If the required fonts are unavailable during compilation, Typst will fall back to the default fonts included with the CLI.
+- If you're using the **web app**, upload the `.ttf` or `.otf` files directly into your project.
+- If you're using the **CLI**, either install the fonts system-wide or specify them using the `--font-path` option.
+
+**Required fonts:**
+
 - **Computer Modern Sans**[^1] (fallback: New Computer Modern Sans)
 - **New Computer Modern Mono** (fallback: DejaVu Sans Mono)
 
-[^1]: Note that this is **not** *New* Computer Modern
+[^1]: Note that this is **not** _New_ Computer Modern, it's the original Knuth-designed version.
 
 ## Caveats
 
-⚠️ This template is still WIP, perfect compliance with the official LIPIcs format is not guaranteed.
+This template is **unofficial**, and **Dagstuhl Publishing does not currently accept Typst documents**.
 
-⚠️ Dagstuhl Publishing does not (currently) accept Typst submissions. This project is also a way to convince them to adopt Typst once the "lobbying" campaign begins (_i.e._, after Typst 1.0.0).
+Most conferences using the LIPIcs format accept **PDF submissions**, so _in theory_, you could submit a paper typeset with Typst.
+However, we strongly discourage using this template for official submissions: doing so risks a **desk reject** if the publisher's formatting requirements are not strictly followed.
+
+If your paper is accepted, you will still need to **convert your Typst source to LaTeX** to submit it to the publisher.
+This may be feasible via tools like [**Pandoc**](https://pandoc.org/) or even LLMs.
+
+For now, this template is best suited for:
+
+- Authors who enjoy working in Typst
+- Those who want a LIPIcs-like preview during drafting
+- Writers who are comfortable converting to LaTeX later if needed
+
+Once Typst reaches version 1.0.0, this template may also serve as a lobbying tool to encourage Dagstuhl to officially support Typst.
+
+**Note:** This template is a work in progress.
+Perfect fidelity with the official LIPIcs format is not guaranteed (yet).
