@@ -17,6 +17,7 @@
 - [ ] Add logos to first page
     - [ ] Add font-awesome icons
     - [x] Convert PDF assets into SVG
+- [ ] Check event logo and location compliance
 
 ### Other
 

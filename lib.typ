@@ -218,32 +218,40 @@
       let current-page = counter(page).get().first()
       if current-page == 1 {
         set text(weight: "medium", size: 7pt, tracking: 0.45pt)
-        set par(leading: 3pt)
-        grid(columns: (auto, auto, 1fr), row-gutter: 1.1mm,
-          // LICENSE INFO
-          grid.cell(link(
-            "https://creativecommons.org/licenses/by/4.0/",
-            image("assets/CC_BY_icon.svg", width: 1.4cm)
-          )),
-          grid.cell(colspan: 2, inset: (left: 1.3mm, top: 0.4mm))[
-            © #copyright\;\
-            licensed under Creative Commons License CC-BY 4.0
-          ],
-          // EVENT INFO
-          grid.cell(colspan: 3)[#event-long-title.],
-          grid.cell(colspan: 3)[
-            #if event-no-eds > 1 [Editors] else [Editor]: #event-editors\;
-            Article No. #article-no\;
-            pp. #article-no:1--#article-no:#counter(page).final().first()
-          ],
-          grid.cell(colspan: 2,
-            block(align(horizon + center, event-logo), width: 23mm, height: 5.5mm)
-          ),
-          grid.cell(
-            inset: (left: 1.3mm),
-            event-location,
-          ),
-          // PUBLISHER INFO
+        set par(leading: 3pt, spacing: 3pt)
+        // EVENT INFO 1
+        // grid.cell(colspan: 2,
+        //   block(align(horizon + center, event-logo), width: 23mm, height: 5.5mm)
+        // ),
+        // grid.cell(
+        //   inset: (left: 1.3mm),
+        //   event-location,
+        // ),
+        // LICENSE INFO
+        stack(dir: ltr, spacing: 5pt,
+          link("https://creativecommons.org/licenses/by/4.0/",
+            image("assets/cc-by.svg", height: .5cm)),
+          [© #copyright\;\ licensed under Creative Commons License CC-BY 4.0]
+        )
+        // EVENT INFO 2
+        let last-page = counter(page).final().first()
+        [
+          #event-long-title. \
+          #if event-no-eds > 1 [Editors] else [Editor]: #event-editors\;
+          Article No. #article-no\;
+          pp. #article-no:1--#article-no:#last-page
+        ]
+        // PUBLISHER INFO
+        stack(dir: ltr, spacing: 5pt,
+          image("assets/lipics-logo-bw.svg", height: .5cm),
+          [
+            #link("https://www.dagstuhl.de/lipics/")[
+              Leibniz International Proceedings in Informatics
+            ] \
+            #link("https://www.dagstuhl.de")[
+              Schloss Dagstuhl -- Leibniz-Zentrum für Informatik, Dagstuhl Publishing, Germany
+            ]
+          ]
         )
       } else if calc.odd(current-page) {
         block(
@@ -423,7 +431,6 @@
     }
   }
   v(1.4mm)
-
 
   // Headings setup
   set heading(numbering: "1.1")
