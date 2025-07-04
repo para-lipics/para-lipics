@@ -216,6 +216,8 @@
     header-ascent: 10.8mm, footer-descent: bot-margin,
     footer: context {
       let current-page = counter(page).get().first()
+      // for the first page:
+      // display the event, license, and publisher info in the footer
       if current-page == 1 {
         set text(weight: "medium", size: 7.5pt, tracking: 0.45pt)
         set par(leading: 3pt, spacing: 3pt)
@@ -253,25 +255,17 @@
             ]
           ]
         )
-      } else if calc.odd(current-page) {
-        block(
-          width: 100%,
-          place(
-            right,
-            dx: 4cm,
-            dy: 9mm,
-            align(
-              horizon + left,
-              box(
-                inset: 2mm,
-                width: 4cm,
-                height: 7mm,
-                fill: colors.yellow,
-                text(tracking: 2pt, spacing: 1pt, font: fonts.sans, weight: "bold", event-short-title),
-              ),
-            ),
+      }
+      // for odd pages (except the first):
+      // display the short event title in a yellow box on the right of the footer
+      else if calc.odd(current-page) {
+        block(width: 100%, place(right, dx: 4cm, dy: 9mm,
+          align(horizon + left,
+            box(inset: 2mm, width: 4cm, height: 7mm, fill: colors.yellow, text(
+              tracking: 2pt, spacing: 1pt, font: fonts.sans, weight: "bold", event-short-title
+            )),
           ),
-        )
+        ))
       }
     }
   )
@@ -289,6 +283,12 @@
     h(3mm)
     it.note.body
   }
+
+  // Line numbering
+  set par.line(numbering: num => text(font: fonts.sans, size: 5pt, numbering(
+    "1", num
+  ))) if line-numbers
+  show figure: set par.line(numbering: none) if line-numbers
 
   // First page metadata
   {
@@ -538,10 +538,6 @@
       bottom: 0.5pt,
     ),
   )
-
-  // Line numbering
-  set par.line(numbering: "1") if line-numbers
-  show figure: set par.line(numbering: none) if line-numbers
 
   content
 
