@@ -44,7 +44,6 @@
     ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse potenti.
   ],
   keywords: [*typst*, type setting, style, lipics-v2021],
-  digital-object-id: "10.4230/LIPIcs.CVIT.2016.23",
   // category: [Showcase],
   supplementary-material-description: [These are supplementary materials],
   supplementary-material: (
@@ -67,14 +66,21 @@
   ),
   acknowledgements: [I want to thank the Typst creators for the wonderful Typesetting engine they have created.],
   funding-general-thanks: [(Optional) general funding statement ...],
-  ccs: "<ccs2012><concept><concept_id>10002944.10011122.10002945</concept_id><concept_desc>General and reference~Surveys and overviews</concept_desc><concept_significance>300</concept_significance></concept></ccs2012>",
-  editors: [Anne Onymous],
-  event: [The Great Typst Discord Showcase 2025],
-  event-location: [Showcase forum \ Discord],
-  event-logo: text(size: 12pt, fill: oklch(64%, 0.08, 200deg), weight: "bold", [typst]),
-  event-short-title: [GTDSC 2025],
-  copyright: [Anne Onymous], // Jane Open Access and Joan R. Public
+  ccs-desc: "<ccs2012><concept><concept_id>10002944.10011122.10002945</concept_id><concept_desc>General and reference~Surveys and overviews</concept_desc><concept_significance>300</concept_significance></concept></ccs2012>",
   line-numbers: true,
+  // editor-only arguments
+  event-editors: [John Q. Open and Joan R. Access],
+  event-no-eds: 2,
+  event-long-title: [42nd Conference on Very Important Topics (CVIT 2016)],
+  event-short-title: [CVIT 2016],
+  event-acronym: "CVIT",
+  event-year: "2016",
+  event-date: [December 24--27, 2016],
+  event-location: [Little Whinging, United Kingdom],
+  event-logo: [],
+  series-volume: 42,
+  article-no: 23,
+  copyright: [Jane Open Access and Joan R. Public],
 )
 
 

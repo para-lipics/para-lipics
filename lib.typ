@@ -18,8 +18,8 @@
 )
 
 
-#let parse-ccs(ccs) = {
-  let ccs = bytes(ccs)
+#let parse-ccs(ccs-desc) = {
+  let ccs = bytes(ccs-desc)
   let find-tag(elem, tag) = {
     elem.children.find(e => "tag" in e and e.tag == tag)
   }
@@ -164,34 +164,42 @@
   authors: [],
   abstract: none,
   keywords: [],
-  digital-object-id: none,
   category: none,
   supplementary-material: none,
   supplementary-material-description: none,
   acknowledgements: none,
   funding-general-thanks: none,
   copyright: none,
-  ccs: none,
+  ccs-desc: none,
   bibliography: none,
-  editors: [],
-  event: [],
-  event-location: [],
-  event-logo: none,
-  event-short-title: [],
   line-numbers: false,
-  // TODO: Add related version
+  // editor-only arguments
+  event-editors: [],
+  event-no-eds: 0,
+  event-long-title: [],
+  event-short-title: [],
+  event-acronym: none,
+  event-year: none,
+  event-date: none,
+  event-location: none,
+  event-logo: none,
+  series-volume: none,
+  article-no: none,
+  // content
   content,
 ) = {
   let authors-running = authors.map(a => a.running).join([ and ])
+
+  let doi = "10.4230/LIPIcs." + event-acronym + "." + str(event-year) + "." + str(article-no)
 
   if title-running == none {
     title-running = title
   }
 
-  let b = 3.5mm
-  set page(
-    "a4",
-    margin: (inside: 32mm, outside: 38mm, top: 35.5mm, bottom: 36.5mm + b),
+  let bot-margin = 3.5mm
+
+  set page("a4",
+    margin: (inside: 32mm, outside: 38mm, top: 35.5mm, bottom: 36.5mm + bot-margin),
     header: context {
       let current-page = counter(page).get().at(0)
       if current-page == 1 { return [] }
@@ -205,41 +213,39 @@
         place(right, dx: 16mm, [#current-page])
       }
     },
-    header-ascent: 10.8mm,
+    header-ascent: 10.8mm, footer-descent: bot-margin,
     footer: context {
-      let current-page = counter(page).get().at(0)
+      let current-page = counter(page).get().first()
       if current-page == 1 {
         set text(weight: "medium", size: 7pt, tracking: 0.45pt)
         set par(leading: 3pt)
-        grid(
-          columns: (auto, auto, 1fr),
-          row-gutter: 1.1mm,
-          grid.cell(image("assets/CC_BY_icon.svg", width: 1.4cm)),
-          grid.cell(
-            colspan: 2,
-            inset: (left: 1.3mm, top: 0.4mm),
-            [
-              © #copyright\;\
-              licensed under Creative Commons License CC-BY 4.0
-            ],
+        grid(columns: (auto, auto, 1fr), row-gutter: 1.1mm,
+          // LICENSE INFO
+          grid.cell(link(
+            "https://creativecommons.org/licenses/by/4.0/",
+            image("assets/CC_BY_icon.svg", width: 1.4cm)
+          )),
+          grid.cell(colspan: 2, inset: (left: 1.3mm, top: 0.4mm))[
+            © #copyright\;\
+            licensed under Creative Commons License CC-BY 4.0
+          ],
+          // EVENT INFO
+          grid.cell(colspan: 3)[#event-long-title.],
+          grid.cell(colspan: 3)[
+            #if event-no-eds > 1 [Editors] else [Editor]: #event-editors\;
+            Article No. #article-no\;
+            pp. #article-no:1--#article-no:#counter(page).final().first()
+          ],
+          grid.cell(colspan: 2,
+            block(align(horizon + center, event-logo), width: 23mm, height: 5.5mm)
           ),
-          grid.cell(
-            colspan: 3,
-            {
-              event
-              if event-short-title != none {
-                [(#event-short-title)]
-              }
-            },
-          ),
-          grid.cell(colspan: 3, editors),
-          grid.cell(colspan: 2, block(align(horizon + center, event-logo), width: 23mm, height: 5.5mm)),
           grid.cell(
             inset: (left: 1.3mm),
             event-location,
-          )
+          ),
+          // PUBLISHER INFO
         )
-      } else if current-page > 1 and calc.odd(current-page) {
+      } else if calc.odd(current-page) {
         block(
           width: 100%,
           place(
@@ -259,15 +265,14 @@
           ),
         )
       }
-    },
-    footer-descent: b,
+    }
   )
   set text(10pt, weight: 200, font: fonts.serif)
   show math.equation: set text(font: fonts.math)
   set par(justify: true)
   set footnote.entry(
     separator: {
-      line(length: 40mm)
+      line(length: 40mm, stroke: colors.linegray)
       v(1.3mm)
     },
   )
@@ -358,13 +363,13 @@
         row-gutter: 4.6mm,
         ..(
           // ACM Classification
-          el([2012 ACM Subject Classification], parse-ccs(ccs)),
+          el([2012 ACM Subject Classification], parse-ccs(ccs-desc)),
           // Keywords
           el([Keywords and phrases], keywords),
           // Digital Object Identifier
           el(
             [Digital Object Identifier],
-            link("https://doi.org/" + digital-object-id, digital-object-id)
+            link("https://doi.org/" + doi, doi)
           ),
           // Category
           el([Category], category),
@@ -485,12 +490,10 @@
   set list(marker: box(width: 2.4mm, height: 1.2mm, fill: colors.bulletgray), body-indent: 3mm, spacing: 2.5mm)
 
   // Enumerations
-  // TODO: How to set second level to a. ?
   set enum(numbering: nums => text(font: fonts.sans, weight: "bold", fill: colors.gray, numbering("1.", nums)))
 
 
   // Figures, tables, listings
-  // TODO : deal with subfigures ?
   show figure: it => {
     if it.caption == none {
       smallcaps(text(red, weight: "bold")[Provide a Caption !])
