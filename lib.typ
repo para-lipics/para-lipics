@@ -168,7 +168,7 @@
   supplementary-material: none,
   supplementary-material-description: none,
   acknowledgements: none,
-  funding-general-thanks: none,
+  funding: none,
   copyright: none,
   ccs-desc: none,
   bibliography: none,
@@ -410,25 +410,18 @@
             ],
           ),
           // Funding acknowledgments
-          el(
-            [Funding],
-            {
-              if funding-general-thanks != none {
-                funding-general-thanks
-                linebreak()
-              }
-              authors
-                .map(a => {
-                  if "funding" not in a { return none }
-                  [
-                    #emph(a.name)
-                    #text(a.funding)
-                  ]
-                })
-                .filter(m => m != none)
-                .join(linebreak())
-            },
-          ),
+          el([Funding], {
+            if funding != none {
+              funding
+              linebreak()
+            }
+            for author in authors {
+              if "funding" in author [
+                #emph(author.name): #text(author.funding)
+                #linebreak()
+              ]
+            }
+          }),
           // General acknowledgements
           el([Acknowledgements], acknowledgements),
         ).filter(el => el != none)

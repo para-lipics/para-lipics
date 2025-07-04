@@ -28,6 +28,7 @@
         (name: [Dummy University Computing Laboratory], address: [[optional: Address]], country: [Country]),
         (name: [My second affiliation], country: [Country]),
       ),
+      funding: [(Optional) author-specific funding acknowledgements],
     ),
     (
       name: [Joan R. Public],
@@ -35,7 +36,7 @@
       affiliations: (
         (name: [Department of Informatics, Dummy College], address: [[optional: Address]], country: [Country]),
       ),
-      funding: [No funding here, but an acknowledgement that could be],
+      funding: [[funding]],
     ),
   ),
   abstract: [
@@ -64,8 +65,8 @@
       linktext: [opt. text shown instead of the URL],
     ),
   ),
-  acknowledgements: [I want to thank the Typst creators for the wonderful Typesetting engine they have created.],
-  funding-general-thanks: [(Optional) general funding statement ...],
+  acknowledgements: [I want to thank...],
+  // funding: [(Optional) General funding statement],
   ccs-desc: "<ccs2012><concept><concept_id>10002944.10011122.10002945</concept_id><concept_desc>General and reference~Surveys and overviews</concept_desc><concept_significance>300</concept_significance></concept></ccs2012>",
   line-numbers: true,
   // editor-only arguments
