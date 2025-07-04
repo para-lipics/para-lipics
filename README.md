@@ -17,7 +17,7 @@ Here are the fonts to install:
 - **Computer Modern Sans**[^1] (fallback: New Computer Modern Sans)
 - **New Computer Modern Mono** (fallback: DejaVu Sans Mono)
 
-[^1]: Note that this is not *New* Computer Modern
+[^1]: Note that this is **not** *New* Computer Modern
 
 ## Caveats
 

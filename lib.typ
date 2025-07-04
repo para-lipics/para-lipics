@@ -337,17 +337,22 @@
     v(2.1mm)
 
     // Abstract
+    // box(baseline: -2pt, line(length: 7mm, stroke: colors.linegray))
+    // h(1.6mm)
+    // text(11pt, font: fonts.sans, tracking: 0.01em, weight: "bold")[Abstract]
+    // h(1.6mm)
+    // box(baseline: -2pt, line(length: 100%, stroke: colors.linegray))
     grid(
       columns: (7mm, auto, 1fr),
-      align: horizon,
+      // align: horizon,
       column-gutter: 1.6mm,
-      box(baseline: -100%, line(length: 100%, stroke: colors.linegray)),
+      place(dy: 6.5pt, line(length: 100%, stroke: colors.linegray)),
       text(11pt, font: fonts.sans, tracking: 0.01em, weight: "bold")[Abstract],
-      line(length: 100%, stroke: rgb("#828085")),
+      place(dy: 6.5pt, line(length: 100%, stroke: colors.linegray)),
     )
+
     v(3.1mm)
     par(leading: 2.1mm, text(size: 9pt, abstract))
-
     v(5mm)
 
     // Other metadata
