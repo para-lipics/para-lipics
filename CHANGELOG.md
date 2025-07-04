@@ -5,6 +5,7 @@ para-lipics: An Unofficial LIPIcs Typst Template - CHANGELOG (YYYY-MM-DD format)
     - added TODO.md
     - added DOI link
     - filled README
+    - added logo files
     - added PDF logo files (to later convert to SVG)
     - changed parts of the testing document to make it closer to the official LIPIcs dummy document (easier for comparison)
     - LaTeX LIPIcs compliance:
