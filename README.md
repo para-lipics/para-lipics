@@ -2,6 +2,10 @@
 
 Unofficial reproduction of the LaTeX `lipics-v2021.cls` template.
 
+⚠️ This is still WIP, perfect compliance with the official LIPIcs template is not guaranteed ⚠️
+
+PRs are welcome.
+
 ## Requirements
 
 This project requires Typst >= 0.13.1.

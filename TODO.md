@@ -1,5 +1,11 @@
 
-## First page
+## Features
+
+- [ ] Implement anonymous flag
+
+## Bugs/Non-compliance
+
+### First page
 
 - [ ] Fix line number on first page
 - [ ] Fix height horizontal rules abstract
@@ -7,9 +13,10 @@
     - [ ] Add font-awesome icons
     - [ ] Convert PDF assets into SVG
 
-## Other
+### Other
 
 - [ ] Fix line number size
 - [ ] Fix height of bullets
+- [ ] Fix line number size
 
 
