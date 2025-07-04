@@ -352,7 +352,7 @@
 
     // Other metadata
     {
-      let el(title, content) = {
+      let lipics-metadata(title, content) = {
         if content == none {
           return none
         }
@@ -361,7 +361,7 @@
           size: 9pt, tracking: 0.1pt, weight: 700,
           font: fonts.sans, colors.gray, title
         )
-        h(1mm)
+        h(2mm)
         text(size: 9pt, content)
       }
 
@@ -371,18 +371,18 @@
         row-gutter: 4.6mm,
         ..(
           // ACM Classification
-          el([2012 ACM Subject Classification], parse-ccs(ccs-desc)),
+          lipics-metadata([2012 ACM Subject Classification], parse-ccs(ccs-desc)),
           // Keywords
-          el([Keywords and phrases], keywords),
+          lipics-metadata([Keywords and phrases], keywords),
           // Digital Object Identifier
-          el(
+          lipics-metadata(
             [Digital Object Identifier],
             link("https://doi.org/" + doi, doi)
           ),
           // Category
-          el([Category], category),
+          lipics-metadata([Category], category),
           // Supplementary material
-          el(
+          lipics-metadata(
             [Supplementary Material],
             [
               #if supplementary-material-description != none {
@@ -405,7 +405,7 @@
             ],
           ),
           // Funding acknowledgments
-          el([Funding], {
+          lipics-metadata([Funding], {
             if funding != none {
               funding
               linebreak()
@@ -418,7 +418,7 @@
             }
           }),
           // General acknowledgements
-          el([Acknowledgements], acknowledgements),
+          lipics-metadata([Acknowledgements], acknowledgements),
         ).filter(el => el != none)
       )
     }
