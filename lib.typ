@@ -289,6 +289,7 @@
     "1", num
   ))) if line-numbers
   show figure: set par.line(numbering: none) if line-numbers
+  show footnote.entry: set par.line(numbering: none) if line-numbers
 
   // First page metadata
   {
@@ -336,12 +337,6 @@
 
     v(2.1mm)
 
-    // Abstract
-    // box(baseline: -2pt, line(length: 7mm, stroke: colors.linegray))
-    // h(1.6mm)
-    // text(11pt, font: fonts.sans, tracking: 0.01em, weight: "bold")[Abstract]
-    // h(1.6mm)
-    // box(baseline: -2pt, line(length: 100%, stroke: colors.linegray))
     grid(
       columns: (7mm, auto, 1fr),
       // align: horizon,
