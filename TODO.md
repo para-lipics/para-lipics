@@ -2,8 +2,13 @@
 ## Features
 
 - [ ] Implement anonymous flag
+- [ ] Handle related version
+- [ ] Handle editor arguments
+- [ ] Deal with subfigures?
+- [ ] Enums: set second level to a.
+- [ ] Implement hide-lipics flag
 
-## Bugs/Non-compliance
+## Compliance
 
 ### First page
 
@@ -11,7 +16,7 @@
 - [ ] Fix height horizontal rules abstract
 - [ ] Add logos to first page
     - [ ] Add font-awesome icons
-    - [ ] Convert PDF assets into SVG
+    - [x] Convert PDF assets into SVG
 
 ### Other
 
