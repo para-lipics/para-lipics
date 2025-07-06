@@ -21,5 +21,6 @@
 - [ ] Fix line number size
 - [ ] Fix height of bullets
 - [ ] Fix line number size
+- [ ] Actually use the fallback fonts (throw a warning?)
 
 

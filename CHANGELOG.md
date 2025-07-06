@@ -19,6 +19,7 @@ para-lipics - CHANGELOG (YYYY-MM-DD format)
         - fixed footnote's horizontal rule color
         - added SVG logo files
         - first page footer: integrated LIPIcs logo, fixed event/copyright/publisher info
+        - fixed short event title color in footer 
     - other:
         - added DOI link
         - changed parts of the testing document to make it closer to the official LIPIcs dummy document (easier for comparison)

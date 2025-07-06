@@ -261,8 +261,11 @@
       else if calc.odd(current-page) {
         block(width: 100%, place(right, dx: 4cm, dy: 9mm,
           align(horizon + left,
-            box(inset: 2mm, width: 4cm, height: 7mm, fill: colors.yellow, text(
-              tracking: 2pt, spacing: 1pt, font: fonts.sans, weight: "bold", event-short-title
+            box(inset: 2mm, width: 4cm, height: 7mm,
+              fill: colors.yellow, text(
+              tracking: 2pt, spacing: 1pt, colors.gray,
+              font: fonts.sans, weight: "bold",
+              event-short-title
             )),
           ),
         ))
