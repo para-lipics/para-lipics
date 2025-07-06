@@ -12,11 +12,8 @@
 
 ### First page
 
-- [ ] Fix line number on first page
-- [ ] Fix height horizontal rules abstract
-- [ ] Add logos to first page
-    - [ ] Add font-awesome icons
-    - [x] Convert PDF assets into SVG
+- [ ] Fix enveloppe logo height
+- [ ] Add author website
 - [ ] Check event logo and location compliance
 
 ### Other

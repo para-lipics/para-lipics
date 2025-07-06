@@ -313,23 +313,35 @@
     // Authors and affiliations
     grid(
       columns: 1,
-      ..authors.map(a => {
-        text(12pt, spacing: 80%, tracking: -0.1pt, weight: 600, a.name)
+      ..authors.map(author => {
+        // author name
+        text(12pt, spacing: 80%, tracking: -0.1pt,
+          weight: 600, author.name)
+        // author email
+        if "email" in author {
+          h(5pt)
+          box(link(
+            "mailto:" + author.email,
+            image("assets/fa5-envelope-regular.svg", width: 1em)
+          ))
+        }
+        // author ORCID
+        if "orcid" in author {
+          h(5pt)
+          box(link(
+            "https://orcid.org/" + author.orcid,
+            image("assets/orcid.svg", height: 1em)
+          ))
+        }
         v(2mm)
-        text(
-          size: 9pt,
-          tracking: 0.12pt,
-          {
-            a
-              .affiliations
-              .map(aff => [
-                #aff.name,
-                #if aff.at("address", default: none) != none [#aff.address,]
-                #if aff.at("country", default: none) != none { aff.country } else [COUNTRY PLEASE]
-                #linebreak()
-              ])
-              .join()
-          },
+        // author affiliations
+        text(size: 9pt, tracking: 0.12pt,
+          author.affiliations.map(aff => [
+            #aff.name,
+            #if aff.at("address", default: none) != none [#aff.address,]
+            #if aff.at("country", default: none) != none { aff.country } else [COUNTRY PLEASE]
+            #linebreak()
+          ]).join()
         )
         v(3.5mm)
       })

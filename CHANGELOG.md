@@ -1,20 +1,21 @@
-para-lipics: An Unofficial LIPIcs Typst Template - CHANGELOG (YYYY-MM-DD format)
+para-lipics - CHANGELOG (YYYY-MM-DD format)
 
 - 2025-07-04: LIPIcs-v2021 v0.1.1
     - para-lipics project:
         - added this changelog
         - added TODO.md
         - filled README
-        - added para-lipics logo files
+        - created para-lipics logo + added files files
         - updated license
     - compliance with official LIPIcs template:
+        - added author ORCID and email
         - made document title bold
-        - fixed line numbers
+        - fixed line numbers on first page + their size
         - fixed metadata elements color and made them bold
         - changed sans font for CMU Sans
         - added editor-only arguments
         - infer DOI from metadata
-        - abstract: "Abstract" bold and fixed horizontal rule color
+        - abstract: "Abstract" bold and fixed horizontal rule color and height
         - fixed footnote's horizontal rule color
         - added SVG logo files
         - first page footer: integrated LIPIcs logo, fixed event/copyright/publisher info

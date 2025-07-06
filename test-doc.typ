@@ -24,6 +24,8 @@
     (
       name: "Jane Open Access",
       running: "J. Open Access",
+      orcid: "1234-1234-1234-1234",
+      email: "jane.open@access.org",
       affiliations: (
         (name: [Dummy University Computing Laboratory], address: [[optional: Address]], country: [Country]),
         (name: [My second affiliation], country: [Country]),
@@ -33,6 +35,7 @@
     (
       name: [Joan R. Public],
       running: "J. R. Public",
+      email: "joan.r@public.org",
       affiliations: (
         (name: [Department of Informatics, Dummy College], address: [[optional: Address]], country: [Country]),
       ),
