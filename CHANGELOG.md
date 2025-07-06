@@ -1,6 +1,20 @@
 para-lipics - CHANGELOG (YYYY-MM-DD format)
 
-- 2025-07-04: LIPIcs-v2021 v0.1.1
+- 2025-07-06: v0.1.2
+    - para-lipics project:
+        - created typst.toml
+        - updated README
+    - compliance with official LIPIcs template: 
+        - added author email, website, and ORCID
+        - added related-version
+        - fixed bullet mark height
+    - other:
+        - renamed template function
+        - simplified affiliations, author-running, funding, ccs-desc, and supplement
+        - renamed test-doc.typ to sample-article.typ
+        - updated sample-article.typ for comparison with official dummy document
+
+- 2025-07-04: v0.1.1
     - para-lipics project:
         - added this changelog
         - added TODO.md
@@ -8,7 +22,6 @@ para-lipics - CHANGELOG (YYYY-MM-DD format)
         - created para-lipics logo + added files files
         - updated license
     - compliance with official LIPIcs template:
-        - added author ORCID and email
         - made document title bold
         - fixed line numbers on first page + their size
         - fixed metadata elements color and made them bold
@@ -24,5 +37,5 @@ para-lipics - CHANGELOG (YYYY-MM-DD format)
         - added DOI link
         - changed parts of the testing document to make it closer to the official LIPIcs dummy document (easier for comparison)
 
-- 2025-05-23: LIPIcs-v2021 v0.1.0
+- 2025-05-23: v0.1.0
     - initial version by Nicolas M
