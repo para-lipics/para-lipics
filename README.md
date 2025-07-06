@@ -4,6 +4,10 @@ A community-maintained Typst reproduction of the official LaTeX `lipics-v2021.cl
 
 GitHub issues and pull requests are welcome.
 
+## Usage
+
+A full example of the usage of `para-lipics` is given in the `sample-article.typ` file.
+
 ## Requirements
 
 This template is only guaranteed to work properly for **Typst ≥ 0.13.1**.

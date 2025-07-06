@@ -1,6 +1,6 @@
 [package]
 name = "para-lipics"
-version = "0.1.1"
+version = "0.1.2"
 entrypoint = "lib.typ"
 authors = ["Nicolas M", "Timothé A"]
 license = "MIT"
@@ -10,9 +10,9 @@ keywords = ["LIPIcs", "Dagstuhl"]
 categories = ["paper"]
 disciplines = ["computer-science", "mathematics"]
 compiler = "0.13.0"
-exclude = ["other/", "test-doc.pdf"]
+exclude = ["other/", "sample-article.*"]
 
 [template]
 path = "template"
-entrypoint = "sample-article.typ"
+entrypoint = "main.typ"
 thumbnail = "thumbnail.png"
