@@ -2,8 +2,6 @@
 ## Features
 
 - [ ] Implement anonymous flag
-- [ ] Handle related version
-- [ ] Handle editor arguments
 - [ ] Deal with subfigures?
 - [ ] Enums: set second level to a.
 - [ ] Implement hide-lipics flag
@@ -18,9 +16,6 @@
 
 ### Other
 
-- [ ] Fix line number size
-- [ ] Fix height of bullets
-- [ ] Fix line number size
 - [ ] Actually use the fallback fonts (throw a warning?)
 
 

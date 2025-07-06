@@ -6,7 +6,7 @@ GitHub issues and pull requests are welcome.
 
 ## Requirements
 
-This template requires **Typst ≥ 0.13.1**.
+This template is only guaranteed to work properly for **Typst ≥ 0.13.1**.
 
 Due to current limitations in Typst's font handling, it is currently not possible to ship custom fonts directly within Typst Universe templates.
 As a result, some fonts must be installed separately to ensure maximal visual compatibility with the official LIPIcs style.
@@ -31,6 +31,8 @@ However, we strongly discourage using this template for official submissions: do
 
 If your paper is accepted, you will still need to **convert your Typst source to LaTeX** to submit it to the publisher.
 This may be feasible via tools like [**Pandoc**](https://pandoc.org/) or even LLMs.
+
+Note that PDFs generated with Typst can be submitted to most open-access e-print repositories (arXiv, HAL...).
 
 For now, this template is best suited for authors who:
 - enjoy working in Typst

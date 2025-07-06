@@ -17,25 +17,6 @@
   mono: "New Computer Modern Mono",
 )
 
-
-#let parse-ccs(ccs-desc) = {
-  let ccs = bytes(ccs-desc)
-  let find-tag(elem, tag) = {
-    elem.children.find(e => "tag" in e and e.tag == tag)
-  }
-  let contents = xml(ccs)
-  let concept = find-tag(contents.at(0), "concept")
-  find-tag(concept, "concept_desc")
-    .children
-    .at(0)
-    .split("~")
-    .join({
-      h(1mm)
-      sym.arrow
-      h(1mm)
-    })
-}
-
 // Environments such as Theorems, Lemmas, Examples, etc
 // Is this the best way ?
 #let env-counters = state(
@@ -158,22 +139,24 @@
 )
 
 
-#let template(
+#let para-lipics(
   title: none,
   title-running: none,
   authors: [],
+  author-running: none,
   abstract: none,
   keywords: [],
   category: none,
-  supplementary-material: none,
-  supplementary-material-description: none,
+  related-version: none,
+  supplement: none,
   acknowledgements: none,
   funding: none,
   copyright: none,
   ccs-desc: none,
   bibliography: none,
   line-numbers: false,
-  // editor-only arguments
+  hide-lipics: false,
+  // ============ EDITOR-ONLY ARGUMENTS ============ //
   event-editors: [],
   event-no-eds: 0,
   event-long-title: [],
@@ -185,11 +168,9 @@
   event-logo: none,
   series-volume: none,
   article-no: none,
-  // content
+  // ============ CONTENT ============ //
   content,
 ) = {
-  let authors-running = authors.map(a => a.running).join([ and ])
-
   let doi = "10.4230/LIPIcs." + event-acronym + "." + str(event-year) + "." + str(article-no)
 
   if title-running == none {
@@ -209,7 +190,7 @@
         place(bottom + left, title-running)
       } else {
         block(width: 100%)
-        place(authors-running)
+        place(author-running)
         place(right, dx: 16mm, [#current-page])
       }
     },
@@ -291,8 +272,7 @@
   set par.line(numbering: num => text(font: fonts.sans, size: 5pt, numbering(
     "1", num
   ))) if line-numbers
-  show figure: set par.line(numbering: none) if line-numbers
-  show footnote.entry: set par.line(numbering: none) if line-numbers
+  show selector(figure).or(footnote.entry): set par.line(numbering: none) if line-numbers
 
   // First page metadata
   {
@@ -328,6 +308,14 @@
             image("assets/fa5-envelope-regular.svg", width: 1em)
           ))
         }
+        // author website
+        if "website" in author {
+          h(5pt)
+          box(link(
+            author.website,
+            image("assets/fa5-home-solid.svg", width: 1em)
+          ))
+        }
         // author ORCID
         if "orcid" in author {
           h(5pt)
@@ -338,14 +326,7 @@
         }
         v(2mm)
         // author affiliations
-        text(size: 9pt, tracking: 0.12pt,
-          author.affiliations.map(aff => [
-            #aff.name,
-            #if aff.at("address", default: none) != none [#aff.address,]
-            #if aff.at("country", default: none) != none { aff.country } else [COUNTRY PLEASE]
-            #linebreak()
-          ]).join()
-        )
+        text(size: 9pt, tracking: 0.12pt, author.affiliations)
         v(3.5mm)
       })
     )
@@ -386,7 +367,7 @@
         row-gutter: 4.6mm,
         ..(
           // ACM Classification
-          lipics-metadata([2012 ACM Subject Classification], parse-ccs(ccs-desc)),
+          lipics-metadata([2012 ACM Subject Classification], ccs-desc),
           // Keywords
           lipics-metadata([Keywords and phrases], keywords),
           // Digital Object Identifier
@@ -396,42 +377,12 @@
           ),
           // Category
           lipics-metadata([Category], category),
+          // Related version
+          lipics-metadata([Related Version], related-version),
           // Supplementary material
-          lipics-metadata(
-            [Supplementary Material],
-            [
-              #if supplementary-material-description != none {
-                supplementary-material-description
-                linebreak()
-              }
-              #(
-                supplementary-material
-                  .map(mat => {
-                    set text(9pt)
-                    emph[#mat.classification,(#mat.subcategory)]
-                    text(font: fonts.mono, link(mat.url, mat.linktext))
-                    linebreak()
-                    h(5mm)
-                    [archived at ]
-                    text(font: fonts.mono, mat.swhid)
-                  })
-                  .join({ linebreak() })
-              )
-            ],
-          ),
+          lipics-metadata([Supplementary Material], supplement),
           // Funding acknowledgments
-          lipics-metadata([Funding], {
-            if funding != none {
-              funding
-              linebreak()
-            }
-            for author in authors {
-              if "funding" in author [
-                #emph(author.name): #text(author.funding)
-                #linebreak()
-              ]
-            }
-          }),
+          lipics-metadata([Funding], funding),
           // General acknowledgements
           lipics-metadata([Acknowledgements], acknowledgements),
         ).filter(el => el != none)
@@ -443,14 +394,14 @@
   // Headings setup
   set heading(numbering: "1.1")
   show heading.where(level: 1): it => {
-    stack(
-      dir: ltr,
+    stack(dir: ltr,
       block(
         fill: colors.yellow,
         outset: (top: 0.7mm, bottom: -0.7mm),
-        height: 5mm,
-        width: 5.9mm,
-        align(center, numbering(it.numbering, ..counter(heading).at(it.location()))),
+        height: 5mm, width: 5.9mm,
+        align(center, numbering(
+          it.numbering, ..counter(heading).at(it.location())
+        )),
       ),
       h(5mm),
       text(font: fonts.sans, size: 12pt, it.body),
@@ -462,30 +413,23 @@
     block(
       above: 7mm,
       below: 5mm,
-      par(
-        first-line-indent: 0cm,
-        {
-          numbering(it.numbering, ..counter(heading).at(it.location()))
-          h(5mm)
-          it.body
-        },
-      ),
+      par(first-line-indent: 0cm, {
+        numbering(it.numbering, ..counter(heading).at(it.location()))
+        h(5mm)
+        it.body
+      }),
     )
   }
   show heading.where(level: 4): it => context {
     v(5.5mm)
-    par(
-      first-line-indent: 0cm,
-      {
-        set text(font: fonts.sans, size: 10.5pt)
-
-        if it.numbering != none {
-          numbering(it.numbering, ..counter(heading).get())
-          h(2mm)
-        }
-        it.body
-      },
-    )
+    par(first-line-indent: 0cm, {
+      set text(font: fonts.sans, size: 10.5pt)
+      if it.numbering != none {
+        numbering(it.numbering, ..counter(heading).get())
+        h(2mm)
+      }
+      it.body
+    })
     v(2.5mm)
   }
   show heading.where(level: 5): it => context {
@@ -502,11 +446,15 @@
   set par(first-line-indent: 15pt, spacing: 0.65em, leading: 0.62em)
 
   // Lists
-  set list(marker: box(width: 2.4mm, height: 1.2mm, fill: colors.bulletgray), body-indent: 3mm, spacing: 2.5mm)
+  set list(body-indent: 5mm, spacing: 2.5mm,
+    marker: place(dy: 4pt, box(
+      width: 2.4mm, height: 1.2mm,
+      fill: colors.bulletgray
+    ))
+  )
 
   // Enumerations
   set enum(numbering: nums => text(font: fonts.sans, weight: "bold", fill: colors.gray, numbering("1.", nums)))
-
 
   // Figures, tables, listings
   show figure: it => {
