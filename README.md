@@ -49,8 +49,8 @@ The following parameter is **not yet** implemented:
 In addition, the template also takes the following editor-only parameters (do not touch as author):
 - `event-editors` (`content`): full name of editor(s)
 - `event-no-eds` (`int`): number of editor(s)
-- `event-long-title` (`content`): 
-- `event-short-title` (`content`): [],
+- `event-long-title` (`content`): long title of the event
+- `event-short-title` (`content`): short title of the event
 - `event-acronym` (`string`): acronym of the event
 - `event-year` (`int`): year of the event
 - `event-date` (`content`): date of the event (`{month} {start day}--{end day}, {year}` format)
