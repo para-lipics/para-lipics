@@ -40,10 +40,10 @@ The parameters that can be passed to template are:
 - `copyright` (optional, `content`): author's full names
 - `ccs-desc` (`content`): [ACM 2012 classification](https://dl.acm.org/ccs/ccs_flat.cfm) of the form `Category $->$ Sub-category`
 - `line-numbers` (`bool`, default: `false`): flag for enabling line numbering
+- `anonymous` (`bool`, default: `false`): flag for anonymizing the authors (_e.g._, for double-blind review)
 
 The following parameters are **not yet** implemented:
 - `hide-lipics` (`bool`, default: `false`): flag for hiding references to LIPIcs series (logo, DOI...), _e.g._, when preparing a arXiv/HAL version
-- `anonymous` (`bool`, default: `false`): flag for anonymizing the authors (_e.g._, for double-blind review)
 - `author-columns` (`bool`, default: `false`): flag for enabling a two-column layout for the author/affilation part (only applicable for >6 authors)
 
 In addition, the template also takes the following editor-only parameters (do not touch as author):
