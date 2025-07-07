@@ -190,7 +190,7 @@
         place(bottom + left, title-running)
       } else {
         block(width: 100%)
-        place(author-running)
+        if anonymous { text(red)[Anonymous author(s)] } else { author-running }
         place(right, dx: 16mm, [#current-page])
       }
     },
@@ -214,7 +214,9 @@
         grid(columns: 2, align: bottom, column-gutter: 5pt,
           link("https://creativecommons.org/licenses/by/4.0/",
             image("assets/cc-by.svg", height: .5cm)),
-          [© #copyright\;\ licensed under Creative Commons License CC-BY 4.0]
+          [
+            © #if anonymous { text(red)[Anonymous author(s)] } else { copyright }\;\
+            licensed under Creative Commons License CC-BY 4.0]
         )
         // EVENT INFO 2
         let last-page = counter(page).final().first()
@@ -297,9 +299,17 @@
     grid(
       columns: 1,
       ..authors.map(author => {
+        // if anonymization is enabled
+        if anonymous {
+          return {
+            text(12pt, spacing: 80%, tracking: -0.1pt, weight: 600, red)[Anonymous author]
+            v(2mm)
+            text(size: 9pt, tracking: 0.12pt, red)[Anonymous affiliation]
+            v(3.5mm)
+          }
+        }
         // author name
-        text(12pt, spacing: 80%, tracking: -0.1pt,
-          weight: 600, author.name)
+        text(12pt, spacing: 80%, tracking: -0.1pt, weight: 600, author.name)
         // author email
         if "email" in author {
           h(5pt)
@@ -362,31 +372,30 @@
       }
 
       set par(leading: 0.5em)
-      grid(
-        columns: 1,
-        row-gutter: 4.6mm,
-        ..(
-          // ACM Classification
-          lipics-metadata([2012 ACM Subject Classification], ccs-desc),
-          // Keywords
-          lipics-metadata([Keywords and phrases], keywords),
-          // Digital Object Identifier
-          lipics-metadata(
-            [Digital Object Identifier],
-            link("https://doi.org/" + doi, doi)
-          ),
-          // Category
-          lipics-metadata([Category], category),
-          // Related version
-          lipics-metadata([Related Version], related-version),
-          // Supplementary material
-          lipics-metadata([Supplementary Material], supplement),
-          // Funding acknowledgments
-          lipics-metadata([Funding], funding),
-          // General acknowledgements
-          lipics-metadata([Acknowledgements], acknowledgements),
-        ).filter(el => el != none)
-      )
+      grid(columns: 1, row-gutter: 4.6mm, ..(
+        // ACM Classification
+        lipics-metadata([2012 ACM Subject Classification], ccs-desc),
+        // Keywords
+        lipics-metadata([Keywords and phrases], keywords),
+        // Digital Object Identifier
+        lipics-metadata([Digital Object Identifier], link("https://doi.org/" + doi, doi)),
+        // Category
+        lipics-metadata([Category], category),
+        // Related version
+        lipics-metadata([Related Version], related-version),
+        // Supplementary material
+        lipics-metadata([Supplementary Material], supplement),
+        // Funding acknowledgments
+        lipics-metadata([Funding], if funding != none {
+          if anonymous { text(red)[Anonymous funding] }
+          else { funding }
+        } else { none }),
+        // General acknowledgements
+        lipics-metadata([Acknowledgements], if acknowledgements != none {
+          if anonymous { text(red)[Anonymous acknowledgments] }
+          else { acknowledgements }
+        } else { none }),
+      ).filter(md => md != none))
     }
   }
   v(1.4mm)

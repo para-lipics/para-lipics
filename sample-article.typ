@@ -39,6 +39,7 @@
     _Joan R. Public_: [funding]
   ],
   line-numbers: true,
+  // anonymous: true,
   // hide-lipics: true,
   // ============ EDITOR-ONLY ARGUMENTS ============ //
   event-editors: [John Q. Open and Joan R. Access],
