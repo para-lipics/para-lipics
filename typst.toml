@@ -10,7 +10,7 @@ keywords = ["LIPIcs", "Dagstuhl"]
 categories = ["paper"]
 disciplines = ["computer-science", "mathematics"]
 compiler = "0.13.1"
-exclude = ["other/"]
+exclude = ["other/", "TODO.md", "CHANGELOG.md"]
 
 [template]
 path = "template"
