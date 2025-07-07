@@ -17,5 +17,6 @@
 ### Other
 
 - [ ] Actually use the fallback fonts (throw a warning?)
+- [ ] Handle appendix
 
 

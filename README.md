@@ -4,7 +4,52 @@ A community-maintained Typst reproduction of the official LaTeX `lipics-v2021.cl
 
 GitHub issues and pull requests are welcome.
 
-## Usage
+## Basic usage
+
+Import the template in your project with:
+
+```typ
+#import "@preview/para-lipics:0.1.2: *": *
+
+#show: para-lipics.with(...)
+
+// paper's content
+```
+
+The parameters that can be passed to template are:
+- `title` (`content`): the paper's title
+- `title-running` (optional, `content`): the paper's short title displayed in headers (if not provided, `title` is used)
+- `authors` (`array`): an array of authors, each author being a dictionary of the form:
+    - `name` (`content`): the author's full name
+    - `email` (optional, `string`): the author's email
+    - `website` (optional, `string`): the author's website
+    - `orcid` (optional, `string`): the author's ORCID
+    - `affiliations` (`content`): the author's affiliations (if there are several affiliations, separate them with a new line)
+- `author-running` (`content`): the list of abbreviated author names, displayed in headers
+- `abstract` (`content`): the paper's abstract
+- `keywords` (`content`): comma-separated list of keywords
+- `category` (optional, `content`): category of the paper (_e.g._, invited paper)
+- `related-version` (optional, `content`): link to full version hosted on open-access repos (arXiv, HAL...)
+- `supplement` (optional, `content`): link to supplementary material (_e.g._, related research data, source code...)
+- `funding` (optional, `content`): paper's funding statement
+- `acknowledgements` (optional, `content`): other acknowledgments
+- `copyright` (optional, `content`): author's full names
+- `ccs-desc` (`content`): [ACM 2012 classification](https://dl.acm.org/ccs/ccs_flat.cfm) of the form `Category $->$ Sub-category`
+- `line-numbers` (`bool`, default: `false`): flag for enabling line numbering
+- `hide-lipics` (`bool`, default: `false`): flag for hiding references to LIPIcs series (logo, DOI...), _e.g._, when preparing a arXiv/HAL version
+
+In addition, the template also takes the following editor-only parameters (do not touch as author):
+- `event-editors` (`content`): full name of editor(s)
+- `event-no-eds` (`int`): number of editor(s)
+- `event-long-title` (`content`): 
+- `event-short-title` (`content`): [],
+- `event-acronym` (`string`): acronym of the event
+- `event-year` (`int`): year of the event
+- `event-date` (`content`): date of the event (`{month} {start day}--{end day}, {year}` format)
+- `event-location` (`content`): location of the event (`{city}, {country}` format)
+- `event-logo` (optional, `string`): path the the logo of the event
+- `series-volume` (`int`): volume in the series
+- `article-no` (`int`): number of the article in the volume
 
 A full example of the usage of `para-lipics` is given in the `sample-article.typ` file.
 

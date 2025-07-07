@@ -142,7 +142,7 @@
 #let para-lipics(
   title: none,
   title-running: none,
-  authors: [],
+  authors: (),
   author-running: none,
   abstract: none,
   keywords: [],
@@ -153,7 +153,6 @@
   funding: none,
   copyright: none,
   ccs-desc: none,
-  bibliography: none,
   line-numbers: false,
   hide-lipics: false,
   // ============ EDITOR-ONLY ARGUMENTS ============ //
@@ -496,6 +495,4 @@
   )
 
   content
-
-  bibliography
 }

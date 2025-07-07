@@ -1,6 +1,6 @@
 para-lipics - CHANGELOG (YYYY-MM-DD format)
 
-- 2025-07-06: v0.1.2
+- 2025-07-07: v0.1.2
     - para-lipics project:
         - created typst.toml
         - updated README
@@ -13,6 +13,7 @@ para-lipics - CHANGELOG (YYYY-MM-DD format)
         - simplified affiliations, author-running, funding, ccs-desc, and supplement
         - renamed test-doc.typ to sample-article.typ
         - updated sample-article.typ for comparison with official dummy document
+        - removed bibliography from template
 
 - 2025-07-04: v0.1.1
     - para-lipics project:
