@@ -3,7 +3,7 @@ para-lipics - CHANGELOG (YYYY-MM-DD format)
 - 2025-07-07: v0.1.2
     - para-lipics project:
         - created typst.toml
-        - updated README
+        - updated README (esp., wrote basic doc)
     - compliance with official LIPIcs template: 
         - added author email, website, and ORCID
         - added related-version
