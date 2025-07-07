@@ -1,4 +1,4 @@
-#import "lib.typ": *
+#import "@preview/para-lipics:0.1.2": *
 
 #let abstract = lorem(39)
 
@@ -7,7 +7,7 @@
   // title-running: [Dummy short title],
   authors: (
     (
-      name: "Jane Open Access",
+      name: [Jane Open Access],
       email: "johnqpublic@dummyuni.org",
       website: "http://www.myhomepage.edu",
       orcid: "0000-0002-1825-0097",
