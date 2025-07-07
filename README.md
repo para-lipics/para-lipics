@@ -1,10 +1,13 @@
-# para-lipics: An Unofficial LIPIcs Template for Typst
+# para-lipics: A LIPIcs-style Template for Typst
 
 A community-maintained Typst reproduction of the official LaTeX `lipics-v2021.cls` template.
 
 <img src="assets/thumbnail.png" alt="para-lipics thumbnail" width="50%">
 
-GitHub issues and pull requests are welcome.
+Found a bug or want to improve the template?
+Open an issue or submit a pull request, contributions are welcome!
+
+⚠️ Note: For best results, install required fonts manually, see [Requirements](#requirements).
 
 ## Basic usage
 
@@ -43,8 +46,9 @@ The parameters that can be passed to template are:
 - `anonymous` (`bool`, default: `false`): flag for anonymizing the authors (_e.g._, for double-blind review)
 - `hide-lipics` (`bool`, default: `false`): flag for hiding references to LIPIcs series (logo, DOI...), _e.g._, when preparing a arXiv/HAL version
 
-The following parameter is **not yet** implemented:
+<!--
 - `author-columns` (`bool`, default: `false`): flag for enabling a two-column layout for the author/affilation part (only applicable for >6 authors)
+-->
 
 In addition, the template also takes the following editor-only parameters (do not touch as author):
 - `event-editors` (`content`): full name of editor(s)
@@ -63,10 +67,10 @@ A full example of the usage of `para-lipics` is given in the `sample-article.typ
 
 ## Requirements
 
-This template is only guaranteed to work properly for **Typst ≥ 0.13.1**.
+This template requires **Typst ≥ 0.13.1**.
 
-Due to current limitations in Typst's font handling, it is currently not possible to ship custom fonts directly within Typst Universe templates.
-As a result, some fonts must be installed separately to ensure maximal visual compatibility with the official LIPIcs style.
+Due to current limitations in Typst's font handling, some required fonts must be installed manually.
+If fonts are missing, fallback fonts will be used (which may alter the visual fidelity of the result).
 
 If the required fonts are unavailable during compilation, the template will use fallback fonts embedded in the CLI.
 - If you're using the **web app**, upload the `.ttf` or `.otf` files directly into your project.
@@ -83,8 +87,8 @@ If the required fonts are unavailable during compilation, the template will use 
 
 This template is **unofficial**, and **Dagstuhl Publishing does not currently accept Typst documents**.
 
-Most conferences using the LIPIcs format accept **PDF submissions**, so _in theory_, you could submit a paper typeset with Typst.
-However, we strongly discourage using this template for official submissions: doing so risks a **desk reject** if the publisher's formatting requirements are not strictly followed.
+Most conferences using the LIPIcs format accept **PDF submissions**, so _in theory_, you can submit a paper typeset with Typst.
+However, we strongly discourage using this template for official submissions: your paper may be desk rejected if the publisher's formatting requirements are not strictly followed.
 
 If your paper is accepted, you will still need to **convert your Typst source to LaTeX** to submit it to the publisher.
 This may be feasible via tools like [**Pandoc**](https://pandoc.org/) or even LLMs.
