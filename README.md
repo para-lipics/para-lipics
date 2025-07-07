@@ -2,7 +2,7 @@
 
 A community-maintained Typst reproduction of the official LaTeX `lipics-v2021.cls` template.
 
-[para-lipics thumbnail](template/thumbnail.png)
+![para-lipics thumbnail](template/thumbnail.png)
 
 GitHub issues and pull requests are welcome.
 
