@@ -9,7 +9,7 @@ GitHub issues and pull requests are welcome.
 Import the template in your project with:
 
 ```typ
-#import "@preview/para-lipics:0.1.2: *": *
+#import "@preview/para-lipics:0.1.2": *
 
 #show: para-lipics.with(...)
 
