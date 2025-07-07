@@ -14,7 +14,7 @@
       affiliations: [
         Dummy University Computing Laboratory, [optional: Address], Country \
         My second affiliation, Country
-      ]
+      ],
     ),
     (
       name: [Joan R. Public#footnote[Optional footnote, e.g. to mark corresponding author]],
@@ -22,7 +22,7 @@
       orcid: "1234-1234-1234-1234",
       affiliations: [
         Department of Informatics, Dummy College, [optional: Address], Country
-      ]
+      ],
     ),
   ),
   author-running: [J. Open Access and J. R. Public],

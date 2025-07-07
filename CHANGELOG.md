@@ -6,7 +6,7 @@ para-lipics - CHANGELOG (YYYY-MM-DD format)
         - updated README (esp., wrote basic doc)
     - compliance with official LIPIcs template: 
         - added author email, website, and ORCID
-        - implemented anonymous flag
+        - implemented anonymous and hide-lipics flags
         - added related-version
         - fixed bullet mark height
     - other:
