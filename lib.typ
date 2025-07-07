@@ -155,6 +155,7 @@
   ccs-desc: none,
   line-numbers: false,
   hide-lipics: false,
+  anonymous: false,
   // ============ EDITOR-ONLY ARGUMENTS ============ //
   event-editors: [],
   event-no-eds: 0,

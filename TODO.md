@@ -1,17 +1,17 @@
 
 ## Features
 
-- [ ] Implement anonymous flag
 - [ ] Deal with subfigures?
 - [ ] Enums: set second level to a.
 - [ ] Implement hide-lipics flag
+- [ ] Implement anonymous flag
+- [ ] Implement author-columns flag for >6 authors
 
 ## Compliance
 
 ### First page
 
 - [ ] Fix enveloppe logo height
-- [ ] Add author website
 - [ ] Check event logo and location compliance
 
 ### Other
