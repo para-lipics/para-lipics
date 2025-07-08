@@ -2,12 +2,13 @@
 
 A community-maintained Typst reproduction of the official LaTeX `lipics-v2021.cls` template.
 
+See [`sample-article.typ`](template/sample-article.typ) for a complete setup with placeholder content:
 <img src="assets/thumbnail.png" alt="para-lipics thumbnail" width="50%">
 
 Found a bug or want to improve the template?
 Open an issue or submit a pull request, contributions are welcome!
 
-⚠️ Note: For best results, install required fonts manually, see [Requirements](#requirements).
+⚠️ **Note:** For best results, install required fonts manually, see [Requirements](#requirements).
 
 ## Basic usage
 
@@ -22,7 +23,8 @@ Import the template in your project with:
 
 #bibliography("bibliography.bib")
 ```
-
+<details open>
+<summary>✒️ Author parameters</summary>
 The parameters that can be passed to the template are:
 - `title` (`content`): the paper's title
 - `title-running` (optional, `content`): the paper's short title displayed in headers (if not provided, `title` is used)
@@ -31,7 +33,7 @@ The parameters that can be passed to the template are:
     - `email` (optional, `string`): the author's email
     - `website` (optional, `string`): the author's website
     - `orcid` (optional, `string`): the author's ORCID
-    - `affiliations` (`content`): the author's affiliations (if there are several affiliations, separate them with a new line)
+    - `affiliations` (`content`): the author's affiliations (use line breaks for multiple affiliations)
 - `author-running` (`content`): the list of abbreviated author names, displayed in headers
 - `abstract` (`content`): the paper's abstract
 - `keywords` (`content`): comma-separated list of keywords
@@ -41,16 +43,18 @@ The parameters that can be passed to the template are:
 - `funding` (optional, `content`): paper's funding statement
 - `acknowledgements` (optional, `content`): other acknowledgments
 - `copyright` (optional, `content`): author's full names
-- `ccs-desc` (`content`): [ACM 2012 classification](https://dl.acm.org/ccs/ccs_flat.cfm) of the form `Category $->$ Sub-category`
-- `line-numbers` (`bool`, default: `false`): flag for enabling line numbering
-- `anonymous` (`bool`, default: `false`): flag for anonymizing the authors (_e.g._, for double-blind review)
-- `hide-lipics` (`bool`, default: `false`): flag for hiding references to LIPIcs series (logo, DOI...), _e.g._, when preparing a arXiv/HAL version
+- `ccs-desc` (`content`): [ACM 2012 classification](https://dl.acm.org/ccs/ccs_flat.cfm) of the form `[Category $->$ Sub-category]`
+- `line-numbers` (`bool`, default: `false`): whether to enable line numbering
+- `anonymous` (`bool`, default: `false`): whether to anonymize authors (_e.g._, for double-blind review)
+- `hide-lipics` (`bool`, default: `false`): whether to hide references to LIPIcs series (logo, DOI...), _e.g._, when preparing a arXiv/HAL version
+</details>
 
 <!--
-- `author-columns` (`bool`, default: `false`): flag for enabling a two-column layout for the author/affilation part (only applicable for >6 authors)
+- `author-columns` (`bool`, default: `false`): whether to enable a two-column layout for the author/affilation part (only applicable for >6 authors)
 -->
 
-In addition, the template also takes the following editor-only parameters (do not touch as author):
+<details>
+<summary>📚 Editor-only parameters (do not modify as an author)</summary>
 - `event-editors` (`content`): full name of editor(s)
 - `event-no-eds` (`int`): number of editor(s)
 - `event-long-title` (`content`): long title of the event
@@ -62,8 +66,7 @@ In addition, the template also takes the following editor-only parameters (do no
 - `event-logo` (optional, `string`): path the the logo of the event
 - `series-volume` (`int`): volume in the series
 - `article-no` (`int`): number of the article in the volume
-
-A full example of the usage of `para-lipics` is given in the `sample-article.typ` file.
+</details>
 
 ## Requirements
 
@@ -72,7 +75,7 @@ This template requires **Typst ≥ 0.13.1**.
 Due to current limitations in Typst's font handling, some required fonts must be installed manually.
 If fonts are missing, fallback fonts will be used (which may alter the visual fidelity of the result).
 
-If the required fonts are unavailable during compilation, the template will use fallback fonts embedded in the CLI.
+If the required fonts are unavailable during compilation, the template will use built-in fallback fonts from the CLI.
 - If you're using the **web app**, upload the `.ttf` or `.otf` files directly into your project.
 - If you're using the **CLI**, either install the fonts on your system or specify them using the `--font-path` option.
 
