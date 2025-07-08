@@ -1,5 +1,11 @@
 para-lipics - CHANGELOG (YYYY-MM-DD format)
 
+Pending changes (not published):
+- para-lipics project:
+    - updated README and typst.toml
+    - moved thumbnail and fixed template entrypoint (for passing bot checks during Typst package PR)
+    - edited authors
+
 - 2025-07-07: v0.1.2
     - para-lipics project:
         - created typst.toml
