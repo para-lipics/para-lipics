@@ -25,6 +25,7 @@ Import the template in your project with:
 ```
 <details open>
 <summary>✒️ Author parameters</summary>
+
 The parameters that can be passed to the template are:
 - `title` (`content`): the paper's title
 - `title-running` (optional, `content`): the paper's short title displayed in headers (if not provided, `title` is used)
@@ -55,6 +56,7 @@ The parameters that can be passed to the template are:
 
 <details>
 <summary>📚 Editor-only parameters (do not modify as an author)</summary>
+
 - `event-editors` (`content`): full name of editor(s)
 - `event-no-eds` (`int`): number of editor(s)
 - `event-long-title` (`content`): long title of the event
