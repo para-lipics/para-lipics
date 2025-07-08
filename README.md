@@ -26,13 +26,11 @@ Import the template in your project with:
 
 The template parameters are listed in the following.
 
-<details open>
+<details>
 <summary>✒️ Author parameters</summary>
 
 - `title` (`content`): the paper's title
-
 - `title-running` (optional, `content`): the paper's short title displayed in headers (if not provided, `title` is used)
-
 - `authors` (`array`): an array of authors, each author being a dictionary of the form:
     - `name` (`content`): the author's full name
     - `email` (optional, `string`): the author's email
