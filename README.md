@@ -2,7 +2,8 @@
 
 A community-maintained Typst reproduction of the official LaTeX `lipics-v2021.cls` template.
 
-See [`sample-article.typ`](template/sample-article.typ) for a complete setup with placeholder content:
+See [`sample-article.typ`](https://github.com/para-lipics/para-lipics/blob/main/template/sample-article.typ) for a complete setup with placeholder content:
+
 <img src="assets/thumbnail.png" alt="para-lipics thumbnail" width="50%">
 
 Found a bug or want to improve the template?
