@@ -23,12 +23,16 @@ Import the template in your project with:
 
 #bibliography("bibliography.bib")
 ```
+
+The template parameters are listed in the following.
+
 <details open>
 <summary>✒️ Author parameters</summary>
 
-The parameters that can be passed to the template are:
 - `title` (`content`): the paper's title
+
 - `title-running` (optional, `content`): the paper's short title displayed in headers (if not provided, `title` is used)
+
 - `authors` (`array`): an array of authors, each author being a dictionary of the form:
     - `name` (`content`): the author's full name
     - `email` (optional, `string`): the author's email
