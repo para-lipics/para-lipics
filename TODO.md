@@ -16,5 +16,7 @@
 
 - [ ] Actually use the fallback fonts (throw a warning?)
 - [ ] Handle appendix
+- [ ] Handle missing event info and other optional arguments
+- [ ] Fix theorems, lemmas, etc. to be able to label them
 
 
