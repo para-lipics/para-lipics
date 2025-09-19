@@ -9,7 +9,7 @@ See [`sample-article.typ`](https://github.com/para-lipics/para-lipics/blob/main/
 Found a bug or want to improve the template?
 Open an issue or submit a pull request, contributions are welcome!
 
-⚠️ **Note:** For best results, install required fonts manually, see [Requirements](#requirements).
+⚠️ **Note:** For best results, install the required font manually, see [Requirements](#requirements).
 
 ## Basic usage
 

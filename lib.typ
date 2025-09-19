@@ -154,18 +154,18 @@
             ]
           ],
         )
-      } // for odd pages (except the first):
+      }
+      // for odd pages (except the first):
       // display a yellow box on the right of the footer
       // if hide-lipics is false, display the short event title
       else if calc.odd(current-page) {
+        let footer-box-text = if hide-lipics [] else [*#event-short-title*]
         block(width: 100%, place(right, dx: 4cm, dy: 9mm, align(horizon + left, box(
           inset: 2mm,
           width: 4cm,
           height: 7mm,
           fill: colors.yellow,
-          text(tracking: 2pt, spacing: 1pt, colors.gray, font: fonts.sans, weight: "bold", if hide-lipics [] else {
-            event-short-title
-          }),
+          text(tracking: 1.5pt, spacing: 1pt, colors.gray, font: fonts.sans, footer-box-text),
         ))))
       }
     },
