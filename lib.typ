@@ -33,10 +33,6 @@
 #let lemma = thm-base("lemma", "Lemma")
 #let observation = thm-base("observation", "Observation")
 #let corollary = thm-base("corollary", "Corollary")
-#let axiom = thm-base("axiom", "Axiom")
-
-#let subobservation = thm-base("subobservation", "Sub-observation", base: "lemma")
-#let sublemma = thm-base("sublemma", "Sub-lemma", base: "lemma")
 
 #let prf-base = thmproof.with(
   titlefmt: it => text(font: fonts.sans, colors.gray)[*#it*],
@@ -357,15 +353,16 @@
 
   // Lists
   set list(body-indent: 5mm, spacing: 2.5mm, marker: place(dy: 3.5pt, box(
-    width: 2.4mm,
-    height: 1.2mm,
-    fill: colors.bulletgray,
+    width: 2.4mm, height: 1.2mm, fill: colors.bulletgray,
   )))
 
   // Enumerations
-  set enum(body-indent: 5mm, spacing: 2.5mm, numbering: nums => place(dy: -1.5pt,
-    text(font: fonts.sans, weight: "bold", fill: colors.gray, numbering("1.", nums)))
-  )
+  set enum(body-indent: 5mm, spacing: 2.5mm, full: true, numbering: (..nums, last) => {
+    let nbings = ("1.", "a.", "i.", "A.")
+    let depth = nums.pos().len()
+    let nbing = nbings.at(nums.pos().len(), default: "A.")
+    place(dy: -1.5pt, text(font: fonts.sans, fill: colors.gray)[*#numbering(nbing, last)*])
+  })
 
   // Bibliography
   set bibliography(style: "association-for-computing-machinery", title: none)

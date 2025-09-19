@@ -77,15 +77,27 @@ The template parameters are listed in the following.
 
 This template requires **Typst ≥ 0.13.1**.
 
-Due to current limitations in Typst's font handling, some required fonts must be installed manually.
-If fonts are missing, fallback fonts will be used (which may alter the visual fidelity of the result).
+Due to current limitations in Typst's font handling, the _Computer Modern Sans_ font must be installed manually.
+Note that this is **not** _New_ Computer Modern, it's the original Knuth-designed version.
+If this font is missing, the _New Computer Modern Sans_ fallback font will be used instead (which may alter the visual fidelity of the result).
 
-If the required fonts are unavailable during compilation, the template will use built-in fallback fonts from the CLI.
-- If you're using the **web app**, upload the `.ttf` or `.otf` files directly into your project.
+- If you're using the **web app**, upload the `.ttf` or `.otf` file directly into your project.
 - If you're using the **CLI**, either install the fonts on your system or specify them using the `--font-path` option.
 
-**Required font:** _Computer Modern Sans_ (fallback: New Computer Modern Sans).
-Note that this is **not** _New_ Computer Modern, it's the original Knuth-designed version.
+## Theorem handling
+
+The `para-lipics` template relies on the [ctheorems package](https://typst.app/universe/package/ctheorems/) to handle theorem-related content.
+Several common environments are already provided by the template: `theorem`, `definition`, `lemma`, `observation`, `corollary`, and `proof`.
+
+The user can define custom theorem-like and proof-like environments by reusing the `thm-base()` and `proof-base()` functions as follows.
+
+```typst
+#import "@preview/para-lipics:0.1.3": *
+
+#let remark = thm-base("remark", "Remark")
+#let proof-sketch = thm-base("proof-sketch", "Proof sketch")
+...
+```
 
 ## Caveats
 

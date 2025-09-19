@@ -1,4 +1,5 @@
-#import "@preview/para-lipics:0.1.2": *
+// #import "@preview/para-lipics:0.1.3": *
+#import "../lib.typ": *
 
 #let abstract = lorem(39)
 
@@ -70,11 +71,11 @@ It uses the `para-lipics` template, which largely follows the official `lipics-v
 
 == Lists and Enumerations
 
-- List bullet
+- List bullet @SR14
 - List bullet
 
 
-+ Enumeration
++ Enumeration @HK15
   + Enumeration
   + Enumeration
 + Enumeration
@@ -89,7 +90,7 @@ It uses the `para-lipics` template, which largely follows the official `lipics-v
   table(
     columns: (1cm, 1fr, 1fr),
     [A], [2], [3],
-    [B], [3], [4],
+    [B], [3], [4 @JM13],
     [C], [3], [4],
     [D], [3], [4],
     [E], [3], [4],
@@ -109,20 +110,22 @@ It uses the `para-lipics` template, which largely follows the official `lipics-v
 
 == Environments
 
-#let content = lorem(24)
-#theorem(content)
-#lemma(content)
-#corollary(content)
-#proposition(content)
-#exercise(content)
-#definition(content)
-#conjecture(content)
-#observation(content)
-#example(content)
-#example(content)
-#note(content)
-// #note(content)
-#remark(content)
-#claim(content)
-#proof(content)
-#claimproof(content)
+#let content = lorem(21)
+
+#theorem([My Theorem])[#content]
+
+#proof[
+#content
+]
+
+#lemma([My Lemma])[#content]
+
+#corollary([My Corollary])[#content]
+
+#definition([My Definition])[#content]
+
+#observation[#content]
+
+
+
+#bibliography("bibliography.bib")

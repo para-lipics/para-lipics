@@ -2,7 +2,6 @@
 ## Features
 
 - [ ] Deal with subfigures?
-- [ ] Enums: set second level to a.
 - [ ] Implement author-columns flag for >6 authors
 - [ ] Implement event logo
 
