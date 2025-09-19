@@ -14,9 +14,9 @@
 
 ### Other
 
-- [ ] Actually use the fallback fonts (throw a warning?)
-- [ ] Handle appendix
 - [ ] Handle missing event info and other optional arguments
-- [ ] Fix theorems, lemmas, etc. to be able to label them
+- [ ] Fix line-numbering for theorem and proof environments (because they are figures)
+- [ ] Check if the smallcaps font is compliant
+- [ ] Code and use a CSL reproduction of BibTeX's plain bibliography style  
 
 

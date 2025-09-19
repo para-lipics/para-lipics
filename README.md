@@ -84,12 +84,8 @@ If the required fonts are unavailable during compilation, the template will use 
 - If you're using the **web app**, upload the `.ttf` or `.otf` files directly into your project.
 - If you're using the **CLI**, either install the fonts on your system or specify them using the `--font-path` option.
 
-**Required fonts:**
-
-- **Computer Modern Sans**[^1] (fallback: New Computer Modern Sans)
-- **New Computer Modern Mono** (fallback: DejaVu Sans Mono)
-
-[^1]: Note that this is **not** _New_ Computer Modern, it's the original Knuth-designed version.
+**Required font:** _Computer Modern Sans_ (fallback: New Computer Modern Sans).
+Note that this is **not** _New_ Computer Modern, it's the original Knuth-designed version.
 
 ## Caveats
 

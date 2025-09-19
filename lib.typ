@@ -1,3 +1,5 @@
+#import "@preview/ctheorems:1.1.3": *
+
 #let colors = (
   yellow: rgb(99%, 78%, 7%),
   gray: rgb(31%, 31%, 33%),
@@ -7,124 +9,41 @@
 )
 
 #let fonts = (
-  // sans: "New Computer Modern Sans",
-  // serif: "New Computer Modern",
-  // math: "New Computer Modern Sans Math",
-  // mono: "New Computer Modern Mono",
-  sans: "CMU Sans Serif",
+  sans: ("CMU Sans Serif", "New Computer Modern Sans"),
   serif: "New Computer Modern",
   math: "New Computer Modern Math",
   mono: "New Computer Modern Mono",
+  smallcaps: "Libertinus Serif"
 )
 
-// Environments such as Theorems, Lemmas, Examples, etc
-// Is this the best way ?
-#let env-counters = state("lipics-env-counters", (
-  theorem: 1,
-  lemma: 1,
-  corollary: 1,
-  proposition: 1,
-  exercise: 1,
-  definition: 1,
-  conjecture: 1,
-  observation: 1,
-  example: 1,
-  note: 1,
-  remark: 1,
-  claim: 1,
-))
-#let env(symbol, title, title-style: text, content) = {
-  block(spacing: 5mm, width: 100%, breakable: false, {
-    set par(first-line-indent: 0cm)
-    if symbol != none {
-      symbol
-      h(1mm)
-    }
-    title-style(text(font: fonts.sans)[*#title*])
-    parbreak()
-    content
-  })
-}
-#let env2(symbol, title, title-style: text, content) = {
-  block(spacing: 5mm, width: 100%, breakable: false, {
-    set par(first-line-indent: 0cm)
-    title-style(text(font: fonts.sans, title))
-    parbreak()
-    content
-    if symbol != none {
-      h(1fr)
-      symbol
-    }
-  })
-}
-#let env-numbered(symbol, title, kind, title-style: text, content) = context {
-  let count = env-counters.get().at(kind)
-  env(symbol, [#title #numbering("1.", count)], title-style: title-style, content)
-  env-counters.update(counts => {
-    let new-counts = counts
-    new-counts.at(kind) = counts.at(kind) + 1
-    new-counts
-  })
-}
-#let env-numbered-type-1(title, kind, content) = {
-  env-numbered(
-    text(size: 13pt, fill: colors.gray, sym.triangle.filled.r),
-    text(weight: "bold", title),
-    kind,
-    title-style: text.with(weight: "bold"),
-    text(style: "italic", content),
-  )
-}
-#let theorem(content) = env-numbered-type-1([Theorem], "theorem", content)
-#let lemma(content) = env-numbered-type-1([Lemma], "lemma", content)
-#let corollary(content) = env-numbered-type-1([Corollary], "corollary", content)
-#let proposition(content) = env-numbered-type-1([Proposition], "proposition", content)
-#let exercise(content) = env-numbered-type-1([Exercise], "exercise", content)
-#let definition(content) = env-numbered-type-1([Definition], "definition", content)
-#let conjecture(content) = env-numbered-type-1([Conjecture], "conjecture", content)
-#let observation(content) = env-numbered-type-1([Observation], "observation", content)
-#let env-numbered-type-2(title, kind, content) = {
-  env-numbered(
-    text(size: 13pt, fill: colors.gray, sym.triangle.filled.r),
-    title,
-    kind,
-    title-style: text.with(weight: "bold"),
-    content,
-  )
-}
-#let example(content) = env-numbered-type-2([Example], "example", content)
-#let env-numbered-type-3(title, kind, content) = {
-  env-numbered(
-    text(size: 13pt, fill: colors.gray, sym.triangle.filled.r),
-    title,
-    kind,
-    content,
-  )
-}
-#let note(content) = env-numbered-type-3([Note], "note", content)
-#let remark(content) = env-numbered-type-3([Remark], "remark", content)
-#let env-numbered-type-4(title, kind, content) = {
-  env-numbered(
-    text(size: 13pt, fill: colors.gray, sym.triangle.r),
-    title,
-    kind,
-    content,
-  )
-}
-#let claim(content) = env-numbered-type-4([Claim], "claim", content)
-#let proof(content) = env2(
-  text(size: 13pt, fill: colors.gray, sym.triangle.filled.l),
-  [Proof.],
-  title-style: text.with(weight: "bold"),
-  content,
-)
-#let claimproof(content) = env2(
-  text(size: 13pt, fill: colors.gray, sym.triangle.l),
-  [Proof.],
-  title-style: text.with(colors.gray),
-  content,
+// DejaVu Sans Mono is integrated in the CLI
+#let thm-triangle = text(sym.triangle.filled.r, font: "DejaVu Sans Mono", size: 1em, colors.gray)
+
+#let thm-base = thmbox.with(
+  base: none,
+  titlefmt: it => text(font: fonts.sans)[#thm-triangle *#it*],
+  namefmt: x => text(font: fonts.sans)[(#x)],
+  separator: text(font: fonts.sans)[*.*#h(0.2em)],
+  bodyfmt: x => emph(x),
+  inset: 0em
 )
 
+#let theorem = thm-base("theorem", "Theorem")
+#let definition = thm-base("definition", "Definition")
+#let lemma = thm-base("lemma", "Lemma")
+#let observation = thm-base("observation", "Observation")
+#let corollary = thm-base("corollary", "Corollary")
+#let axiom = thm-base("axiom", "Axiom")
+
+#let subobservation = thm-base("subobservation", "Sub-observation", base: "lemma")
+#let sublemma = thm-base("sublemma", "Sub-lemma", base: "lemma")
+
+#let prf-base = thmproof.with(
+  titlefmt: it => text(font: fonts.sans, colors.gray)[*#it*],
+  separator: text(font: fonts.sans, colors.gray)[*.*#h(0.2em)],
+  inset: 0em
+)
+#let proof = prf-base("proof", "Proof")
 
 #let para-lipics(
   title: none,
@@ -145,10 +64,10 @@
   anonymous: false,
   author-columns: false,
   // ============ EDITOR-ONLY ARGUMENTS ============ //
-  event-editors: [],
+  event-editors: none,
   event-no-eds: 0,
-  event-long-title: [],
-  event-short-title: [],
+  event-long-title: none,
+  event-short-title: none,
   event-acronym: none,
   event-year: none,
   event-date: none,
@@ -159,7 +78,9 @@
   // ============ CONTENT ============ //
   content,
 ) = {
-  let doi = "10.4230/LIPIcs." + event-acronym + "." + str(event-year) + "." + str(article-no)
+  let str-event-year = if event-year != none { str(event-year) } else { "" }
+  let str-article-no = if article-no != none { str(article-no) } else { "" }
+  let doi = "10.4230/LIPIcs." + event-acronym + "." + str-event-year + "." + str-article-no
 
   if title-running == none {
     title-running = title
@@ -213,12 +134,11 @@
         )
         // EVENT INFO 2
         let last-page = counter(page).final().first()
-        [
-          #event-long-title. \
+        if event-long-title != none [#event-long-title. \ ]
+        if event-editors != none [
           #if event-no-eds > 1 [Editors] else [Editor]: #event-editors\;
-          Article No. #article-no\;
-          pp. #article-no:1--#article-no:#last-page
         ]
+        if article-no != none [Article No. #article-no\; pp. #article-no:1--#article-no:#last-page]
         // PUBLISHER INFO
         grid(
           columns: 2,
@@ -250,7 +170,8 @@
       }
     },
   )
-  set text(10pt, weight: 200, font: fonts.serif)
+  set text(10pt, font: fonts.serif)
+  show smallcaps: set text(font: fonts.smallcaps)
   show math.equation: set text(font: fonts.math)
   set par(justify: true)
   set footnote.entry(separator: {
@@ -362,27 +283,27 @@
 
       set par(leading: 0.5em)
       grid(columns: 1, row-gutter: 4.6mm, ..(
-          // ACM Classification
-          lipics-metadata([2012 ACM Subject Classification], ccs-desc),
-          // Keywords
-          lipics-metadata([Keywords and phrases], keywords),
-          // Digital Object Identifier
-          lipics-metadata([Digital Object Identifier], link("https://doi.org/" + doi, doi)),
-          // Category
-          lipics-metadata([Category], category),
-          // Related version
-          lipics-metadata([Related Version], related-version),
-          // Supplementary material
-          lipics-metadata([Supplementary Material], supplement),
-          // Funding acknowledgments
-          lipics-metadata([Funding], if funding != none {
-            if anonymous { text(red)[Anonymous funding] } else { funding }
-          } else { none }),
-          // General acknowledgements
-          lipics-metadata([Acknowledgements], if acknowledgements != none {
-            if anonymous { text(red)[Anonymous acknowledgments] } else { acknowledgements }
-          } else { none }),
-        ).filter(md => md != none))
+        // ACM Classification
+        lipics-metadata([2012 ACM Subject Classification], ccs-desc),
+        // Keywords
+        lipics-metadata([Keywords and phrases], keywords),
+        // Digital Object Identifier
+        lipics-metadata([Digital Object Identifier], link("https://doi.org/" + doi, doi)),
+        // Category
+        lipics-metadata([Category], category),
+        // Related version
+        lipics-metadata([Related Version], related-version),
+        // Supplementary material
+        lipics-metadata([Supplementary Material], supplement),
+        // Funding acknowledgments
+        lipics-metadata([Funding], if funding != none {
+          if anonymous { text(red)[Anonymous funding] } else { funding }
+        } else { none }),
+        // General acknowledgements
+        lipics-metadata([Acknowledgements], if acknowledgements != none {
+          if anonymous { text(red)[Anonymous acknowledgments] } else { acknowledgements }
+        } else { none }),
+      ).filter(md => md != none))
     }
   }
   v(1.4mm)
@@ -390,15 +311,15 @@
   // Headings setup
   set heading(numbering: "1.1")
   show heading.where(level: 1): it => {
-    stack(
-      dir: ltr,
-      block(fill: colors.yellow, outset: (top: 0.7mm, bottom: -0.7mm), height: 5mm, width: 5.9mm, align(
-        center,
-        numbering(it.numbering, ..counter(heading).at(it.location())),
-      )),
-      h(5mm),
-      text(font: fonts.sans, size: 12pt, it.body),
-    )
+    let nb-block = if it.numbering == none { none } else {
+      block(fill: colors.yellow, outset: (top: 0.7mm, bottom: -0.7mm),
+        height: 5mm, width: 5.9mm,
+        align(center, text(font: fonts.sans, size: 12pt,
+          numbering(it.numbering, ..counter(heading).at(it.location()))
+        ))
+      )
+    }
+    stack(dir: ltr, nb-block, h(5mm), text(font: fonts.sans, size: 12pt, it.body))
     v(1.5mm)
   }
   show heading.where(level: 2).or(heading.where(level: 3)): it => {
@@ -429,47 +350,61 @@
   }
 
   // Code font
-  show raw: set text(font: fonts.mono)
+  show raw: set text(font: fonts.mono, size: 1.2em)
 
   // Paragraph settings for the rest of the document
   set par(first-line-indent: 15pt, spacing: 0.65em, leading: 0.62em)
 
   // Lists
-  set list(body-indent: 5mm, spacing: 2.5mm, marker: place(dy: 4pt, box(
+  set list(body-indent: 5mm, spacing: 2.5mm, marker: place(dy: 3.5pt, box(
     width: 2.4mm,
     height: 1.2mm,
     fill: colors.bulletgray,
   )))
 
   // Enumerations
-  set enum(numbering: nums => text(font: fonts.sans, weight: "bold", fill: colors.gray, numbering("1.", nums)))
+  set enum(body-indent: 5mm, spacing: 2.5mm, numbering: nums => place(dy: -1.5pt,
+    text(font: fonts.sans, weight: "bold", fill: colors.gray, numbering("1.", nums)))
+  )
+
+  // Bibliography
+  set bibliography(style: "association-for-computing-machinery", title: none)
+  // set bibliography(style: "institute-of-electrical-and-electronics-engineers")
+  show bibliography: it => {
+    grid(
+      columns: (7mm, auto, 1fr),
+      // align: horizon,
+      column-gutter: 1.6mm,
+      place(dy: 6.5pt, line(length: 100%, stroke: colors.linegray)),
+      text(11pt, font: fonts.sans, tracking: 0.01em, weight: "bold")[References],
+      place(dy: 6.5pt, line(length: 100%, stroke: colors.linegray)),
+    )
+    show grid.cell.where(x: 0): it => {
+      set align(right)
+      let nb = it.body.child.text.slice(1, -1)
+      text(size: .9em, font: fonts.sans, colors.gray)[*#nb*]
+      h(.8em)
+    }
+    // set grid(column-gutter: 4em)
+    v(.5em)
+    set text(size: .95em)
+    
+    it
+  }
 
   // Figures, tables, listings
-  show figure: it => {
-    if it.caption == none {
-      smallcaps(text(red, weight: "bold")[Provide a Caption !])
-    }
-    block(width: 100%, if it.kind == image {
-      it.body
-      it.caption
-    } else if it.kind == table {
-      block(width: 100%, it.caption)
-      block(width: 90%, it.body)
-    } else if it.kind == raw {
-      it.caption
-      set align(left)
-      block(width: 100%, inset: 3mm, fill: colors.lightgray, it.body)
-    } else {
-      it
-    })
-  }
+  show figure.where(
+    kind: table
+  ): set figure.caption(position: top)
+  
   show figure.caption: it => context {
     set align(left)
+    set text(size: .92em)
     align(horizon, {})
     box(fill: color.yellow, inset: 1.4mm)
     let n = numbering(it.numbering, ..counter(figure.where(kind: it.kind)).get())
     h(3mm)
-    text(font: fonts.sans, weight: "bold", [#it.supplement #n])
+    text(font: fonts.sans, weight: "bold")[#it.supplement #n]
     h(2mm)
     text(it.body)
   }
@@ -478,5 +413,9 @@
     bottom: 0.5pt,
   ))
 
+  // Math
+  show: thmrules.with(qed-symbol: $square$)
+  
+  // Content
   content
 }
