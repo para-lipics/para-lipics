@@ -86,7 +86,7 @@ If this font is missing, the _New Computer Modern Sans_ fallback font will be us
 
 ## Theorem handling
 
-The `para-lipics` template relies on the [ctheorems package](https://typst.app/universe/package/ctheorems/) to handle theorem-related content.
+The `para-lipics` template relies on the [ctheorems package (v1.1.3)](https://typst.app/universe/package/ctheorems/) to handle theorem-related content.
 Several common environments are already provided by the template: `theorem`, `definition`, `lemma`, `observation`, `corollary`, and `proof`.
 
 The user can define custom theorem-like and proof-like environments by reusing the `thm-base()` and `proof-base()` functions as follows.

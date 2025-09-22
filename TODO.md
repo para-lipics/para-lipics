@@ -14,7 +14,6 @@
 ### Other
 
 - [ ] Handle missing event info and other optional arguments
-- [ ] Fix line-numbering for theorem and proof environments (because they are figures)
 - [ ] Check if the smallcaps font is compliant
 - [ ] Code and use a CSL reproduction of BibTeX's plain bibliography style  
 

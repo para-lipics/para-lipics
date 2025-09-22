@@ -181,11 +181,11 @@
   }
 
   // Line numbering
-  set par.line(numbering: num => text(font: fonts.sans, size: 5pt, numbering(
-    "1",
-    num,
-  ))) if line-numbers
+  let line-nbing(num) = text(font: fonts.sans, size: 5pt, numbering("1", num))
+  set par.line(numbering: line-nbing) if line-numbers
   show selector(figure).or(footnote.entry): set par.line(numbering: none) if line-numbers
+  // rely on ctheorems internals to select theorem envs (may break in the future)
+  show figure.where(kind: "thmenv"): set par.line(numbering: line-nbing) if line-numbers
 
   // First page metadata
   {
@@ -246,9 +246,7 @@
     v(2.1mm)
 
     grid(
-      columns: (7mm, auto, 1fr),
-      // align: horizon,
-      column-gutter: 1.6mm,
+      columns: (7mm, auto, 1fr), column-gutter: 1.6mm,
       place(dy: 6.5pt, line(length: 100%, stroke: colors.linegray)),
       text(11pt, font: fonts.sans, tracking: 0.01em, weight: "bold")[Abstract],
       place(dy: 6.5pt, line(length: 100%, stroke: colors.linegray)),
