@@ -4,7 +4,7 @@
 
 #show: para-lipics.with(
   title: [Dummy title],
-  // title-running: [Dummy short title],
+  title-running: [Dummy short title],
   authors: (
     (
       name: [Jane Open Access],
