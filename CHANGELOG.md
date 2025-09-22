@@ -1,10 +1,23 @@
 para-lipics - CHANGELOG (YYYY-MM-DD format)
 
-Pending changes (not published):
-- para-lipics project:
-    - updated README and typst.toml
-    - moved thumbnail and fixed template entrypoint (for passing bot checks during Typst package PR)
-    - edited authors
+Pending changes (not published): N/A
+
+- 2025-09-22: v0.1.3
+    - para-lipics project:
+        - updated README and typst.toml
+        - moved thumbnail and fixed template entrypoint (for passing bot checks during Typst package PR)
+        - edited authors
+    - compliance with official LIPIcs template: 
+        - fixed spacing of event title in footer boxes
+        - changed theorem handling with ctheorems
+        - used fallback for Sans font, removed NCU Mono font requirement
+        - fixed yellow triangle for theorems
+        - fixed unspecified metadata
+        - added smallcaps font
+        - fixed bold text not working
+        - fixed layout of lists/enums
+        - fixed bug with headings without numbering (e.g. bibliography)
+        - added LIPIcs-like bibliography look
 
 - 2025-07-07: v0.1.2
     - para-lipics project:
