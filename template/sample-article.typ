@@ -1,5 +1,5 @@
-// #import "@preview/para-lipics:0.1.3": *
-#import "../lib.typ": *
+#import "@preview/para-lipics:0.1.3": *
+// #import "../lib.typ": *
 
 #let abstract = lorem(39)
 
