@@ -18,6 +18,7 @@ Pending changes (not published): N/A
         - fixed layout of lists/enums
         - fixed bug with headings without numbering (e.g. bibliography)
         - added LIPIcs-like bibliography look
+        - fixed line-numbering for theorem and proof environments (because they are figures)
 
 - 2025-07-07: v0.1.2
     - para-lipics project:
