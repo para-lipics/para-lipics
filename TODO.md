@@ -21,6 +21,7 @@
 - [ ] Change even page header to "XX:{page number}" when hide-lipics is false and article-no is none
 - [ ] Offset centered equations to the left (not necessary, this is only in `align` environments in the LaTeX template, not for `$$...$$`)
 - [ ] Fix bullet point size with level >1
+- [ ] Use same counter for all theorem-like envs
 
 ## Submitting a new version
 
