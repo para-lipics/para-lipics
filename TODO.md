@@ -16,9 +16,7 @@
 - [ ] Handle missing event info and other optional arguments
 - [ ] Check if the smallcaps font is compliant
 - [ ] Code and use a CSL reproduction of BibTeX's plain bibliography style
-- [ ] Fix QED symbol of theorem-like environments (must be a left-oriented gray triangle)
 - [ ] Fix algorithm caption on top
-- [ ] Change even page header to "XX:{page number}" when hide-lipics is false and article-no is none
 - [ ] Offset centered equations to the left (not necessary, this is only in `align` environments in the LaTeX template, not for `$$...$$`)
 - [ ] Fix bullet point size with level >1
 - [ ] Use same counter for all theorem-like envs

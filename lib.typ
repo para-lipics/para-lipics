@@ -16,12 +16,15 @@
   smallcaps: "Libertinus Serif"
 )
 
-// DejaVu Sans Mono is integrated in the CLI
-#let thm-triangle = text(sym.triangle.filled.r, font: "DejaVu Sans Mono", size: 1em, colors.gray)
+// Defining the triangles used for the theorem environments
+// (DejaVu Sans Mono is integrated in the CLI)
+#let thm-tri-size = 1em
+#let thmtriR = text(sym.triangle.filled.r, font: "DejaVu Sans Mono", size: thm-tri-size, colors.gray)
+#let thmtriL = text(sym.triangle.filled.l, font: "DejaVu Sans Mono", size: thm-tri-size, colors.gray)
 
 #let thm-base = thmbox.with(
   base: none,
-  titlefmt: it => text(font: fonts.sans)[#thm-triangle *#it*],
+  titlefmt: it => text(font: fonts.sans)[#thmtriR *#it*],
   namefmt: x => text(font: fonts.sans)[(#x)],
   separator: text(font: fonts.sans)[*.*#h(0.2em)],
   bodyfmt: x => emph(x),
@@ -91,13 +94,16 @@
       let current-page = counter(page).get().at(0)
       if current-page == 1 { return [] }
       set text(11pt, font: fonts.sans, weight: "bold")
+      let art-no-page-no = if hide-lipics [#current-page]
+        else if article-no != none [#article-no:#current-page]
+        else [#text(red)[XX]:#current-page]
       if calc.even(current-page) {
-        place(bottom + left, dx: -10mm, [#current-page])
+        place(bottom + left, dx: -16mm, art-no-page-no)
         place(bottom + left, title-running)
       } else {
         block(width: 100%)
         if anonymous { text(red)[Anonymous author(s)] } else { author-running }
-        place(right, dx: 16mm, [#current-page])
+        place(right, dx: 16mm, art-no-page-no)
       }
     },
     header-ascent: 10.8mm,
@@ -376,8 +382,10 @@
     )
     show grid.cell.where(x: 0): it => {
       set align(right)
-      let nb = it.body.child.text.slice(1, -1)
-      text(size: .9em, font: fonts.sans, colors.gray)[*#nb*]
+      show regex("\[.*\]"): s => s.text.slice(1, -1)
+      set text(size: .9em, font: fonts.sans, colors.gray)
+      show: strong
+      it
       h(.8em)
     }
     // set grid(column-gutter: 4em)
@@ -409,7 +417,7 @@
   ))
 
   // Math
-  show: thmrules.with(qed-symbol: $square$)
+  show: thmrules.with(qed-symbol: thmtriL)
   
   // Content
   content
