@@ -17,32 +17,34 @@
 )
 
 // Defining the triangles used for the theorem environments
-// (DejaVu Sans Mono is integrated in the CLI)
+// (DejaVu Sans Mono is integrated by default in the CLI)
 #let thm-tri-size = 1em
 #let thmtriR = text(sym.triangle.filled.r, font: "DejaVu Sans Mono", size: thm-tri-size, colors.gray)
 #let thmtriL = text(sym.triangle.filled.l, font: "DejaVu Sans Mono", size: thm-tri-size, colors.gray)
 
 #let thm-base = thmbox.with(
-  base: none,
+  "thm-like", base: none,
   titlefmt: it => text(font: fonts.sans)[#thmtriR *#it*],
-  namefmt: x => text(font: fonts.sans)[(#x)],
+  namefmt: it => text(font: fonts.sans)[(#it)],
   separator: text(font: fonts.sans)[*.*#h(0.2em)],
-  bodyfmt: x => emph(x),
-  inset: 0em
+  bodyfmt: emph, inset: 0em
 )
 
-#let theorem = thm-base("theorem", "Theorem")
-#let definition = thm-base("definition", "Definition")
-#let lemma = thm-base("lemma", "Lemma")
-#let observation = thm-base("observation", "Observation")
-#let corollary = thm-base("corollary", "Corollary")
+#let theorem = thm-base("Theorem")
+#let definition = thm-base("Definition")
+#let lemma = thm-base("Lemma")
+#let observation = thm-base("Observation")
+#let corollary = thm-base("Corollary")
 
 #let prf-base = thmproof.with(
+  "proof",
   titlefmt: it => text(font: fonts.sans, colors.gray)[*#it*],
+  namefmt: it => text(font: fonts.sans, colors.gray)[*#it*],
   separator: text(font: fonts.sans, colors.gray)[*.*#h(0.2em)],
   inset: 0em
 )
-#let proof = prf-base("proof", "Proof")
+
+#let proof = prf-base("Proof")
 
 #let para-lipics(
   title: none,

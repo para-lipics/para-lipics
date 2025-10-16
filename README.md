@@ -94,8 +94,8 @@ The user can define custom theorem-like and proof-like environments by reusing t
 ```typst
 #import "@preview/para-lipics:0.1.3": *
 
-#let remark = thm-base("remark", "Remark")
-#let proof-sketch = thm-base("proof-sketch", "Proof sketch")
+#let remark = thm-base("Remark")
+#let proof-sketch = thm-base("Proof sketch")
 ...
 ```
 
