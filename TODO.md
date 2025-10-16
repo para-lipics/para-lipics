@@ -19,7 +19,6 @@
 - [ ] Fix algorithm caption on top
 - [ ] Offset centered equations to the left (not necessary, this is only in `align` environments in the LaTeX template, not for `$$...$$`)
 - [ ] Fix bullet point size with level >1
-- [ ] Use same counter for all theorem-like envs
 
 ## Submitting a new version
 
