@@ -1,13 +1,22 @@
 para-lipics - CHANGELOG (YYYY-MM-DD format)
 
-Pending changes (not published): N/A
+- Pending changes (not published):
+    - para-lipics project:
+        - updated README
+    - compliance with official LIPIcs template:
+        - added paper number handling in the headers
+        - changed the QED symbol of theorems to the LIPIcs left-oriented triangle
+        - use the same counter for theorem-like environments
+        - fixed the name formatting of proof-like environments
+    - other:
+        - fixed crash with the bibliography in Typst 0.14
 
 - 2025-09-22: v0.1.3
     - para-lipics project:
         - updated README and typst.toml
         - moved thumbnail and fixed template entrypoint (for passing bot checks during Typst package PR)
         - edited authors
-    - compliance with official LIPIcs template: 
+    - compliance with official LIPIcs template:
         - fixed spacing of event title in footer boxes
         - changed theorem handling with ctheorems
         - used fallback for Sans font, removed NCU Mono font requirement
@@ -26,7 +35,7 @@ Pending changes (not published): N/A
     - para-lipics project:
         - created typst.toml
         - updated README (esp., wrote basic doc)
-    - compliance with official LIPIcs template: 
+    - compliance with official LIPIcs template:
         - added author email, website, and ORCID
         - implemented anonymous and hide-lipics flags
         - added related-version

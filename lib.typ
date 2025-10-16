@@ -372,11 +372,9 @@
 
   // Bibliography
   set bibliography(style: "association-for-computing-machinery", title: none)
-  // set bibliography(style: "institute-of-electrical-and-electronics-engineers")
   show bibliography: it => {
     grid(
       columns: (7mm, auto, 1fr),
-      // align: horizon,
       column-gutter: 1.6mm,
       place(dy: 6.5pt, line(length: 100%, stroke: colors.linegray)),
       text(11pt, font: fonts.sans, tracking: 0.01em, weight: "bold")[References],
