@@ -13,21 +13,33 @@
   serif: "New Computer Modern",
   math: "New Computer Modern Math",
   mono: "New Computer Modern Mono",
-  smallcaps: "Libertinus Serif"
+  smallcaps: "Libertinus Serif",
 )
 
 // Defining the triangles used for the theorem environments
 // (DejaVu Sans Mono is integrated by default in the CLI)
 #let thm-tri-size = 1em
-#let thmtriR = text(sym.triangle.filled.r, font: "DejaVu Sans Mono", size: thm-tri-size, colors.gray)
-#let thmtriL = text(sym.triangle.filled.l, font: "DejaVu Sans Mono", size: thm-tri-size, colors.gray)
+#let thmtriR = text(
+  sym.triangle.filled.r,
+  font: "DejaVu Sans Mono",
+  size: thm-tri-size,
+  colors.gray,
+)
+#let thmtriL = text(
+  sym.triangle.filled.l,
+  font: "DejaVu Sans Mono",
+  size: thm-tri-size,
+  colors.gray,
+)
 
 #let thm-base = thmbox.with(
-  "thm-like", base: none,
+  "thm-like",
+  base: none,
   titlefmt: it => text(font: fonts.sans)[#thmtriR *#it*],
   namefmt: it => text(font: fonts.sans)[(#it)],
   separator: text(font: fonts.sans)[*.*#h(0.2em)],
-  bodyfmt: emph, inset: 0em
+  bodyfmt: emph,
+  inset: 0em,
 )
 
 #let theorem = thm-base("Theorem")
@@ -41,7 +53,7 @@
   titlefmt: it => text(font: fonts.sans, colors.gray)[*#it*],
   namefmt: it => text(font: fonts.sans, colors.gray)[*#it*],
   separator: text(font: fonts.sans, colors.gray)[*.*#h(0.2em)],
-  inset: 0em
+  inset: 0em,
 )
 
 #let proof = prf-base("Proof")
@@ -96,9 +108,9 @@
       let current-page = counter(page).get().at(0)
       if current-page == 1 { return [] }
       set text(11pt, font: fonts.sans, weight: "bold")
-      let art-no-page-no = if hide-lipics [#current-page]
-        else if article-no != none [#article-no:#current-page]
-        else [#text(red)[XX]:#current-page]
+      let art-no-page-no = if hide-lipics [#current-page] else if (
+        article-no != none
+      ) [#article-no:#current-page] else [#text(red)[XX]:#current-page]
       if calc.even(current-page) {
         place(bottom + left, dx: -16mm, art-no-page-no)
         place(bottom + left, title-running)
@@ -131,7 +143,10 @@
           columns: 2,
           align: bottom,
           column-gutter: 5pt,
-          link("https://creativecommons.org/licenses/by/4.0/", image("assets/cc-by.svg", height: .5cm)),
+          link("https://creativecommons.org/licenses/by/4.0/", image(
+            "assets/cc-by.svg",
+            height: .5cm,
+          )),
           [
             © #if anonymous { text(red)[Anonymous author(s)] } else { copyright }\;\
             licensed under Creative Commons License CC-BY 4.0],
@@ -158,8 +173,7 @@
             ]
           ],
         )
-      }
-      // for odd pages (except the first):
+      } // for odd pages (except the first):
       // display a yellow box on the right of the footer
       // if hide-lipics is false, display the short event title
       else if calc.odd(current-page) {
@@ -254,7 +268,8 @@
     v(2.1mm)
 
     grid(
-      columns: (7mm, auto, 1fr), column-gutter: 1.6mm,
+      columns: (7mm, auto, 1fr),
+      column-gutter: 1.6mm,
       place(dy: 6.5pt, line(length: 100%, stroke: colors.linegray)),
       text(11pt, font: fonts.sans, tracking: 0.01em, weight: "bold")[Abstract],
       place(dy: 6.5pt, line(length: 100%, stroke: colors.linegray)),
@@ -285,27 +300,27 @@
 
       set par(leading: 0.5em)
       grid(columns: 1, row-gutter: 4.6mm, ..(
-        // ACM Classification
-        lipics-metadata([2012 ACM Subject Classification], ccs-desc),
-        // Keywords
-        lipics-metadata([Keywords and phrases], keywords),
-        // Digital Object Identifier
-        lipics-metadata([Digital Object Identifier], link("https://doi.org/" + doi, doi)),
-        // Category
-        lipics-metadata([Category], category),
-        // Related version
-        lipics-metadata([Related Version], related-version),
-        // Supplementary material
-        lipics-metadata([Supplementary Material], supplement),
-        // Funding acknowledgments
-        lipics-metadata([Funding], if funding != none {
-          if anonymous { text(red)[Anonymous funding] } else { funding }
-        } else { none }),
-        // General acknowledgements
-        lipics-metadata([Acknowledgements], if acknowledgements != none {
-          if anonymous { text(red)[Anonymous acknowledgments] } else { acknowledgements }
-        } else { none }),
-      ).filter(md => md != none))
+          // ACM Classification
+          lipics-metadata([2012 ACM Subject Classification], ccs-desc),
+          // Keywords
+          lipics-metadata([Keywords and phrases], keywords),
+          // Digital Object Identifier
+          lipics-metadata([Digital Object Identifier], link("https://doi.org/" + doi, doi)),
+          // Category
+          lipics-metadata([Category], category),
+          // Related version
+          lipics-metadata([Related Version], related-version),
+          // Supplementary material
+          lipics-metadata([Supplementary Material], supplement),
+          // Funding acknowledgments
+          lipics-metadata([Funding], if funding != none {
+            if anonymous { text(red)[Anonymous funding] } else { funding }
+          } else { none }),
+          // General acknowledgements
+          lipics-metadata([Acknowledgements], if acknowledgements != none {
+            if anonymous { text(red)[Anonymous acknowledgments] } else { acknowledgements }
+          } else { none }),
+        ).filter(md => md != none))
     }
   }
   v(1.4mm)
@@ -314,11 +329,15 @@
   set heading(numbering: "1.1")
   show heading.where(level: 1): it => {
     let nb-block = if it.numbering == none { none } else {
-      block(fill: colors.yellow, outset: (top: 0.7mm, bottom: -0.7mm),
-        height: 5mm, width: 5.9mm,
-        align(center, text(font: fonts.sans, size: 12pt,
-          numbering(it.numbering, ..counter(heading).at(it.location()))
-        ))
+      block(
+        fill: colors.yellow,
+        outset: (top: 1.2mm, bottom: -0.7mm),
+        height: 5mm,
+        width: 5.9mm,
+        align(center, text(font: fonts.sans, size: 12pt, numbering(
+          it.numbering,
+          ..counter(heading).at(it.location()),
+        ))),
       )
     }
     stack(dir: ltr, nb-block, h(5mm), text(font: fonts.sans, size: 12pt, it.body))
@@ -359,7 +378,9 @@
 
   // Lists
   set list(body-indent: 5mm, spacing: 2.5mm, marker: place(dy: 3.5pt, box(
-    width: 2.4mm, height: 1.2mm, fill: colors.bulletgray,
+    width: 2.4mm,
+    height: 1.2mm,
+    fill: colors.bulletgray,
   )))
 
   // Enumerations
@@ -391,15 +412,15 @@
     // set grid(column-gutter: 4em)
     v(.5em)
     set text(size: .95em)
-    
+
     it
   }
 
   // Figures, tables, listings
   show figure.where(
-    kind: table
+    kind: table,
   ): set figure.caption(position: top)
-  
+
   show figure.caption: it => context {
     set align(left)
     set text(size: .92em)
@@ -418,7 +439,7 @@
 
   // Math
   show: thmrules.with(qed-symbol: thmtriL)
-  
+
   // Content
   content
 }
