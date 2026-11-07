@@ -9,7 +9,7 @@
 
 ### First page
 
-- [ ] Fix enveloppe logo height
+- [ ] Fix envelope logo height
 
 ### Other
 
