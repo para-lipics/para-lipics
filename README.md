@@ -16,7 +16,7 @@ Open an issue or submit a pull request, contributions are welcome!
 Import the template in your project with:
 
 ```typ
-#import "@preview/para-lipics:0.1.3": *
+#import "@preview/para-lipics:0.1.4": *
 
 #show: para-lipics.with(...)
 
@@ -92,7 +92,7 @@ Several common environments are already provided by the template: `theorem`, `de
 The user can define custom theorem-like and proof-like environments by reusing the `thm-base()` and `proof-base()` functions as follows.
 
 ```typst
-#import "@preview/para-lipics:0.1.3": *
+#import "@preview/para-lipics:0.1.4": *
 
 #let remark = thm-base("Remark")
 #let proof-sketch = thm-base("Proof sketch")

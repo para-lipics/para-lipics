@@ -1,4 +1,6 @@
 
+# TODO
+
 ## Features
 
 - [ ] Deal with subfigures?
@@ -7,12 +9,7 @@
 
 ## Compliance
 
-### First page
-
-- [ ] Fix envelope logo height
-
-### Other
-
+- [ ] First page: fix envelope logo height
 - [ ] Handle missing event info and other optional arguments
 - [ ] Check if the smallcaps font is compliant
 - [ ] Code and use a CSL reproduction of BibTeX's plain bibliography style
@@ -20,7 +17,11 @@
 - [ ] Offset centered equations to the left (not necessary, this is only in `align` environments in the LaTeX template, not for `$$...$$`)
 - [ ] Fix bullet point size with level >1
 
-## Submitting a new version
+## Other
+
+- [ ] Pass to ctheorems:0.2.0
+
+# Submitting a new version
 
 - [ ] Have you updated the version number in:
     - [ ] `typst.toml`?

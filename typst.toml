@@ -1,6 +1,6 @@
 [package]
 name = "para-lipics"
-version = "0.1.3"
+version = "0.1.4"
 entrypoint = "lib.typ"
 authors = ["Nicolas M", "Timothé A"]
 license = "MIT"

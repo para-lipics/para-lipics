@@ -1,4 +1,4 @@
-#import "@preview/para-lipics:0.1.3": *
+#import "@preview/para-lipics:0.1.4": *
 
 #let abstract = lorem(39)
 
