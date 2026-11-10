@@ -390,7 +390,7 @@
   })
 
   // Bibliography
-  set bibliography(style: "plain.csl", title: none)
+  // set bibliography(style: "plain.csl", title: none)
   set bibliography(style: "association-for-computing-machinery", title: none)
   show bibliography: it => {
     grid(
