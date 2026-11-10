@@ -1,15 +1,20 @@
 para-lipics - CHANGELOG (YYYY-MM-DD format)
 
 - Pending changes (not published):
-    - para-lipics project:
-        - updated README
+
+- 2026-11-10: v0.1.4:
+    - README:
+        - added a section on algorithms
+        - various hotfixes
     - compliance with official LIPIcs template:
         - added paper number handling in the headers
         - changed the QED symbol of theorems to the LIPIcs left-oriented triangle
         - use the same counter for theorem-like environments
         - fixed the name formatting of proof-like environments
+        - fixed the position of the listing/algorithm captions (top instead of bottom)
     - other:
         - fixed crash with the bibliography in Typst 0.14
+        - updated to ctheorems:2.0.0
 
 - 2025-09-22: v0.1.3
     - para-lipics project:

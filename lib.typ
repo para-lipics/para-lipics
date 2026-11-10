@@ -1,4 +1,4 @@
-#import "@preview/ctheorems:1.1.3": *
+#import "@preview/ctheorems:2.0.0": *
 
 #let colors = (
   yellow: rgb(99%, 78%, 7%),
@@ -22,12 +22,15 @@
 #let thmtriR = text(sym.triangle.filled.r, font: "DejaVu Sans Mono", size: thm-tri-size, colors.gray)
 #let thmtriL = text(sym.triangle.filled.l, font: "DejaVu Sans Mono", size: thm-tri-size, colors.gray)
 
-#let thm-base = thmbox.with(
-  "thm-like", base: none,
-  titlefmt: it => text(font: fonts.sans)[#thmtriR *#it*],
-  namefmt: it => text(font: fonts.sans)[(#it)],
-  separator: text(font: fonts.sans)[*.*#h(0.2em)],
-  bodyfmt: emph, inset: 0em
+#let thm-base(supplement) = thm.with(
+  supplement: supplement,
+  counter: "thm-like", base: none,
+  fmt: thm-fmt-block.with(
+    title-fmt: it => text(font: fonts.sans, colors.gray)[#thmtriR *#it*],
+    name-fmt: it => text(font: fonts.sans, colors.gray)[(#it)],
+    separator: text(font: fonts.sans, colors.gray)[*.* ],
+  ),
+  inset: (top: .5em, bottom: .5em, left: 0pt, right: 0em),
 )
 
 #let theorem = thm-base("Theorem")
@@ -36,12 +39,19 @@
 #let observation = thm-base("Observation")
 #let corollary = thm-base("Corollary")
 
-#let prf-base = thmproof.with(
-  "proof",
-  titlefmt: it => text(font: fonts.sans, colors.gray)[*#it*],
-  namefmt: it => text(font: fonts.sans, colors.gray)[*#it*],
-  separator: text(font: fonts.sans, colors.gray)[*.*#h(0.2em)],
-  inset: 0em
+#let prf-base(supplement) = thm.with(
+  supplement: supplement, numbering: none,
+  fmt: thm-fmt-block.with(
+    title-fmt: it => text(font: fonts.sans, colors.gray)[*#it*],
+    name-fmt: it => text(font: fonts.sans, colors.gray)[*#it*],
+    separator: text(font: fonts.sans, colors.gray)[*.* ],
+    body-fmt: proof-body-fmt,
+  )
+)
+
+#let algorithm = figure.with(
+  kind: "algorithm",
+  supplement: [Algorithm]
 )
 
 #let proof = prf-base("Proof")
@@ -232,17 +242,26 @@
         // author email
         if "email" in author {
           h(5pt)
-          box(link("mailto:" + author.email, image("assets/fa5-envelope-regular.svg", width: 1em)))
+          box(baseline: 1pt, link(
+            "mailto:" + author.email,
+            image("assets/fa5-envelope-regular.svg", width: .9em)
+          ))
         }
         // author website
         if "website" in author {
-          h(5pt)
-          box(link(author.website, image("assets/fa5-home-solid.svg", width: 1em)))
+          h(3pt)
+          box(link(
+            author.website,
+            image("assets/fa5-home-solid.svg", width: .9em)
+          ))
         }
         // author ORCID
         if "orcid" in author {
-          h(5pt)
-          box(link("https://orcid.org/" + author.orcid, image("assets/orcid.svg", height: 1em)))
+          h(3pt)
+          box(link(
+            "https://orcid.org/" + author.orcid,
+            image("assets/orcid.svg", height: .9em)
+          ))
         }
         v(2mm)
         // author affiliations
@@ -371,6 +390,7 @@
   })
 
   // Bibliography
+  set bibliography(style: "plain.csl", title: none)
   set bibliography(style: "association-for-computing-machinery", title: none)
   show bibliography: it => {
     grid(
@@ -396,8 +416,10 @@
   }
 
   // Figures, tables, listings
-  show figure.where(
-    kind: table
+  show figure.where(kind: table).or(
+    figure.where(kind: raw)
+  ).or(
+    figure.where(kind: "algorithm")
   ): set figure.caption(position: top)
   
   show figure.caption: it => context {
@@ -417,7 +439,7 @@
   ))
 
   // Math
-  show: thmrules.with(qed-symbol: thmtriL)
+  show: thm-rules.with(qed-symbol: thmtriL)
   
   // Content
   content
