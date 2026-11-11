@@ -22,10 +22,14 @@
 
 - [ ] Have you updated the para-lipics version number in:
     - [ ] `typst.toml`?
-    - [ ] `README.md`?
+    - [ ] `README.md` (twice)?
     - [ ] `sample-article.typ`?
 - [ ] Have you updated the ctheorems version number in `README.md`?
+- [ ] Have you updated the algol-code version number in `sample-article.typ`?
 - [ ] Have you recorded all changes in `CHANGELOG.md`?
 - [ ] Have you removed the `other/` folder from the pull request?
+- [ ] Have you compiled a new version of `thumbnail.png`?
+    - Command: `typst compile --pages 1 sample-article.typ thumbnail.png`
+- [ ] Have you created a new release on the GitHub repository?
 
 

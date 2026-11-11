@@ -1,6 +1,6 @@
 // #import "@preview/para-lipics:0.1.4": *
 #import "@preview/algol-code:0.1.0": algol
-#import "../lib.typ": *
+#import "lib.typ": *
 
 
 #let abstract = lorem(39)
