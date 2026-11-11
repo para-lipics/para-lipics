@@ -2,7 +2,7 @@
 
 A community-maintained Typst reproduction of the official LaTeX `lipics-v2021.cls` template.
 
-See [`sample-article.typ`](https://github.com/para-lipics/para-lipics/blob/main/template/sample-article.typ) for a complete setup with placeholder content:
+See [`sample-article.typ`](template/sample-article.typ) for a complete setup with placeholder content:
 
 <img src="assets/thumbnail.png" alt="para-lipics thumbnail" width="50%">
 
@@ -15,10 +15,13 @@ Open an issue or submit a pull request, contributions are welcome!
 
 Import the template in your project with:
 
-```typ
+```typst
 #import "@preview/para-lipics:0.1.4": *
 
-#show: para-lipics.with(...)
+#show: para-lipics.with(
+    title: [My Title],
+    // ...
+)
 
 // body of the paper
 
@@ -89,14 +92,13 @@ If this font is missing, the _New Computer Modern Sans_ fallback font will be us
 The `para-lipics` template relies on the [ctheorems package (v2.0.0)](https://typst.app/universe/package/ctheorems/) to handle theorem-related content.
 Several common environments are already provided by the template: `theorem`, `definition`, `lemma`, `observation`, `corollary`, and `proof`.
 
-The user can define custom theorem-like and proof-like environments by reusing the `thm-base()` and `proof-base()` functions as follows.
+The user can define custom theorem-like and proof-like environments by reusing the `thm-base()` and `prf-base()` functions as follows.
 
 ```typst
 #import "@preview/para-lipics:0.1.4": *
 
 #let remark = thm-base("Remark")
-#let proof-sketch = thm-base("Proof sketch")
-...
+#let proof-sketch = prf-base("Proof sketch")
 ```
 
 ## Algorithms
