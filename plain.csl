@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" version="1.0" class="in-text" default-locale="en-US">
+  <!-- This style was edited with the Visual CSL Editor (https://editor.citationstyles.org/visualEditor/#) -->
+  <info>
+    <title>Plain (BibTeX)</title>
+    <title-short>Plain</title-short>
+    <id>http://www.zotero.org/styles/plain</id>
+    <link rel="self" href="http://www.zotero.org/styles/plain"/>
+    <author>
+      <name>Howard Trickey</name>
+    </author>
+    <author>
+      <name>Oren Patashnik</name>
+    </author>
+    <author>
+      <name>Timothé Albouy</name>
+      <email>timothe.albouy@gmail.com</email>
+    </author>
+    <category citation-format="numeric"/>
+    <summary>Faithful CSL conversion of the standard BibTeX plain.bst style.</summary>
+    <updated>2025-10-08T17:28:31+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under the MIT License</rights>
+  </info>
+  <macro name="author">
+    <group suffix=".">
+      <names variable="author">
+        <name delimiter=", " and="text" sort-separator=", "/>
+        <label prefix=", " form="long"/>
+        <substitute>
+          <names variable="editor"/>
+          <text variable="publisher"/>
+          <text variable="authority"/>
+        </substitute>
+      </names>
+    </group>
+  </macro>
+  <macro name="editor">
+    <names variable="editor">
+      <name delimiter=", " and="text" delimiter-precedes-last="never"/>
+      <label prefix=", "/>
+    </names>
+  </macro>
+  <macro name="title">
+    <choose>
+      <if type="book thesis" match="any">
+        <text variable="title" font-style="italic"/>
+      </if>
+      <else>
+        <text variable="title" text-case="capitalize-first"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="year">
+    <date variable="issued">
+      <date-part name="year"/>
+    </date>
+  </macro>
+  <macro name="edition">
+    <group delimiter=" ">
+      <number variable="edition" form="ordinal"/>
+      <text term="edition"/>
+    </group>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=", ">
+      <text variable="publisher"/>
+      <text variable="publisher-place"/>
+    </group>
+  </macro>
+  <macro name="sort-key">
+    <choose>
+      <if variable="author">
+        <names variable="author">
+          <name sort-separator=" " name-as-sort-order="all"/>
+        </names>
+      </if>
+      <else-if variable="editor">
+        <names variable="editor">
+          <name sort-separator=" " name-as-sort-order="all"/>
+        </names>
+      </else-if>
+      <else-if variable="authority">
+        <text variable="authority"/>
+      </else-if>
+      <else-if variable="publisher">
+        <text variable="publisher"/>
+      </else-if>
+      <else>
+        <text variable="title"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="container-title">
+    <text variable="container-title" font-style="italic"/>
+  </macro>
+  <macro name="vol-page">
+    <choose>
+      <if type="article-journal" match="any">
+        <text variable="volume"/>
+        <text variable="issue" prefix="(" suffix=")"/>
+        <text value=":"/>
+        <text variable="page"/>
+      </if>
+      <else>
+        <group delimiter=", ">
+          <group delimiter=" ">
+            <label variable="volume"/>
+            <text variable="volume"/>
+          </group>
+          <group delimiter=" ">
+            <label variable="page"/>
+            <text variable="page"/>
+          </group>
+        </group>
+      </else>
+    </choose>
+  </macro>
+  <citation>
+    <layout prefix="[" suffix="]" delimiter=", ">
+      <text variable="citation-number"/>
+      <text variable="locator"/>
+    </layout>
+  </citation>
+  <bibliography entry-spacing="0" second-field-align="flush">
+    <sort>
+      <key macro="sort-key"/>
+      <key variable="issued" sort="descending"/>
+      <key variable="title"/>
+    </sort>
+    <layout>
+      <text variable="citation-number" prefix="[" suffix="] "/>
+      <group delimiter=". " suffix=". ">
+        <text macro="author"/>
+        <text macro="title"/>
+      </group>
+      <choose>
+        <if type="article-journal" match="any">
+          <group delimiter=", " suffix=".">
+            <text macro="container-title"/>
+            <text macro="vol-page"/>
+            <text macro="year"/>
+          </group>
+        </if>
+        <else>
+          <group delimiter=" " suffix=". ">
+            <text term="in" text-case="capitalize-first" suffix=" "/>
+            <group font-style="normal" delimiter=", ">
+              <text macro="editor"/>
+              <text macro="container-title"/>
+              <text macro="vol-page"/>
+            </group>
+          </group>
+          <group delimiter=", " suffix=". ">
+            <choose>
+              <if type="report" match="any">
+                <text value="Technical report"/>
+              </if>
+            </choose>
+            <group delimiter=" ">
+              <text variable="genre"/>
+              <text variable="number"/>
+            </group>
+            <text macro="publisher"/>
+            <text macro="edition"/>
+            <text macro="year" prefix=" "/>
+          </group>
+        </else>
+      </choose>
+      <text variable="note"/>
+    </layout>
+  </bibliography>
+</style>

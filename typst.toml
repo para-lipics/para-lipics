@@ -1,6 +1,6 @@
 [package]
 name = "para-lipics"
-version = "0.1.3"
+version = "0.1.4"
 entrypoint = "lib.typ"
 authors = ["Nicolas M", "Timothé A"]
 license = "MIT"
@@ -9,7 +9,7 @@ repository = "https://github.com/para-lipics/para-lipics/"
 keywords = ["LIPIcs", "Dagstuhl"]
 categories = ["paper"]
 disciplines = ["computer-science", "mathematics"]
-compiler = "0.13.1"
+compiler = "0.14.0"
 exclude = ["other/", "TODO.md", "CHANGELOG.md"]
 
 [template]

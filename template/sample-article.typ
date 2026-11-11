@@ -1,4 +1,7 @@
-#import "@preview/para-lipics:0.1.3": *
+// #import "@preview/para-lipics:0.1.4": *
+#import "@preview/algol-code:0.1.0": algol
+#import "../lib.typ": *
+
 
 #let abstract = lorem(39)
 
@@ -77,11 +80,11 @@ It uses the `para-lipics` template, which largely follows the official `lipics-v
 + Enumeration @HK15
   + Enumeration
   + Enumeration
-+ Enumeration
++ Enumeration @GR93 @FOCS16 @K74 @D68 @HPV75
   + Enumeration
   + Enumeration
 
-== Figures, tables, and listings
+== Figures, tables, listings, algorithms
 
 #figure(block(fill: yellow, width: 10cm, height: 5cm), caption: [This is my figure])
 
@@ -107,21 +110,37 @@ It uses the `para-lipics` template, which largely follows the official `lipics-v
   caption: [My listing],
 )
 
+#algorithm(algol[
+- *function* $"binary-search"(A, e)$ *is*
+  - $L <- 0$
+  - $R <- "length"(A) - 1$
+  - *while* $L <= R$ *do*
+    - $m <- L + floor((R - L) / 2)$
+    - *if* $A[m] < e$ *then*
+      + $L <- m + 1$
+    - *else if* $A[m] > e$ *then*
+      + $R <- m - 1$
+    - *else* *return* $m$     <line:found-element>
+  - *return* $"error"$        <line:error>
+], caption: [
+  Binary search algorithm
+])
+
 == Environments
 
 #let content = lorem(21)
 
-#theorem([My Theorem])[#content]
+#theorem[My Theorem][#content]
 
 #proof[
 #content
 ]
 
-#lemma([My Lemma])[#content]
+#lemma[My Lemma][#content]
 
-#corollary([My Corollary])[#content]
+#corollary[My Corollary][#content]
 
-#definition([My Definition])[#content]
+#definition[My Definition][#content]
 
 #observation[#content]
 
