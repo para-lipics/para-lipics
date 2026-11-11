@@ -103,7 +103,7 @@ The user can define custom theorem-like and proof-like environments by reusing t
 
 ## Algorithms
 
-The `para-lipics` template does not use a default algorithm package, to leave this choice to the discretion of the user.
+The `para-lipics` template does not use a default algorithm package, leaving this choice to the discretion of the user.
 However, Typst's `raw` blocks can be used in figures (resulting in "listings"), and the template also provides an `algorithm()` figure type that can be used in conjunction with any algorithm typesetting package.
 (The `sample-article.typ` document uses the [`algol-code`](https://typst.app/universe/package/algol-code) package for demonstration purposes.)
 
