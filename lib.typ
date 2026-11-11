@@ -348,7 +348,7 @@
     let nb-block = if it.numbering == none { none } else {
       block(
         fill: _colors.yellow,
-        outset: (top: .7mm, bottom: -.7mm),
+        outset: (top: .7mm, bottom: -0.7mm),
         height: 5mm,
         width: 5.9mm,
         align(center, text(font: _fonts.sans, size: 12pt, numbering(
